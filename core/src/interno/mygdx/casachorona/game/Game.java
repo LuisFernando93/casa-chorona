@@ -4,14 +4,20 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector3;
+import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 import interno.mygdx.casachorona.control.ControlMouse;
+import interno.mygdx.casachorona.ui.DialogueBox;
 
 public class Game extends ApplicationAdapter {
+	
 	private SpriteBatch batch;
 	private ControlMouse mouse;
 	private Vector3 mouseClick;
+	
+	private Table root;
+	private DialogueBox dialogueBox;
 	
 	@Override
 	public void create () {
