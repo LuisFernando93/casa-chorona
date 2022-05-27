@@ -2,18 +2,25 @@ package interno.mygdx.casachorona.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import interno.mygdx.casachorona.control.ControlMouse;
 import interno.mygdx.casachorona.game.CasaChorona;
+import interno.mygdx.casachorona.game.Settings;
+import interno.mygdx.casachorona.model.PlayerPointer;
 import interno.mygdx.casachorona.ui.DialogueBox;
 
 public class GameScreen extends AbstractScreen {
 	
 	private SpriteBatch batch;
+	private PlayerPointer player;
+	private ControlMouse controller;
+	private Vector2 clickLocation;
 	
 	private Skin skin;
 	
@@ -22,11 +29,14 @@ public class GameScreen extends AbstractScreen {
 	private Stage uiStage;
 	private Table dialogRoot;
 	private DialogueBox dialogueBox;
+	
 
 	public GameScreen(CasaChorona game) {
 		super(game);
 		
 		batch = new SpriteBatch();
+		player = new PlayerPointer(Settings.getScreenWidth()/2, Settings.getScreenHeight()/2);
+		controller = new ControlMouse(player);
 	}
 	
 	private void initUI() {
@@ -48,7 +58,7 @@ public class GameScreen extends AbstractScreen {
 
 	@Override
 	public void show() {
-		
+		Gdx.input.setInputProcessor(controller);
 	}
 
 	@Override
@@ -56,6 +66,9 @@ public class GameScreen extends AbstractScreen {
 		batch.begin();
 		
 		batch.end();
+		if (player.isClicked()) {
+			clickLocation = player.clickLocation();
+		}
 	}
 
 	@Override
