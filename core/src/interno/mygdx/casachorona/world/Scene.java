@@ -10,7 +10,6 @@ public class Scene {
 		this.location = location;
 		this.nDoors = nDoors;
 		this.doors = new Door[nDoors];
-		System.out.println("primeira porta: " + this.doors[0]);
 	}
 	
 	public Location getLocation() {

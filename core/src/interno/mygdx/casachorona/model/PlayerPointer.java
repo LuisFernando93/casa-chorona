@@ -2,6 +2,8 @@ package interno.mygdx.casachorona.model;
 
 import com.badlogic.gdx.math.Vector2;
 
+import interno.mygdx.casachorona.world.Location;
+
 public class PlayerPointer {
 	
 	private int x;
@@ -9,10 +11,12 @@ public class PlayerPointer {
 	private int clickedX;
 	private int clickedY;
 	private boolean clicked = false;
+	private Location currentLocation;
 	
 	public PlayerPointer(int x, int y) {
 		this.x = x;
 		this.y = y;
+		this.currentLocation = Location.SCENE2;
 	}
 	
 	public int getX() {
@@ -21,6 +25,14 @@ public class PlayerPointer {
 	
 	public int getY() {
 		return this.y;
+	}
+	
+	public Location getCurrentLocation() {
+		return this.currentLocation;
+	}
+	
+	public void setCurrentLocation(Location currentLocation) {
+		this.currentLocation = currentLocation;
 	}
 	
 	public void movePointer(int x, int y) {

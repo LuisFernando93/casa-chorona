@@ -1,6 +1,7 @@
 package interno.mygdx.casachorona.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -14,15 +15,21 @@ import interno.mygdx.casachorona.game.CasaChorona;
 import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.PlayerPointer;
 import interno.mygdx.casachorona.ui.DialogueBox;
-import interno.mygdx.casachorona.world.Location;
-import interno.mygdx.casachorona.world.Scene;
+import interno.mygdx.casachorona.world.World;
+import interrno.mygdx.casachorona.graphics.BackgroundTextures;
 
 public class GameScreen extends AbstractScreen {
 	
 	private SpriteBatch batch;
 	private PlayerPointer player;
+	private World world;
+	
 	private ControlMouse controller;
 	private Vector2 clickLocation;
+	
+	private BackgroundTextures backgroundTextures;
+	private int currentSceneIndex;
+	private Texture backgroundRender;
 	
 	private Skin skin;
 	
@@ -37,7 +44,9 @@ public class GameScreen extends AbstractScreen {
 		super(game);
 		
 		batch = new SpriteBatch();
+		backgroundTextures = new BackgroundTextures();
 		player = new PlayerPointer(Settings.getScreenWidth()/2, Settings.getScreenHeight()/2);
+		world = new World();
 		controller = new ControlMouse(player);
 		//Scene cenario = new Scene(Location.SCENE1, 2);
 	}
@@ -67,7 +76,10 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	public void render(float delta) {
 		batch.begin();
-		
+		currentSceneIndex = world.findCurrentSceneIndex(player.getCurrentLocation());
+		System.out.println(currentSceneIndex);
+		backgroundRender = backgroundTextures.getSceneArt(currentSceneIndex);
+		batch.draw(backgroundRender, 0, 0, Settings.getScreenWidth()*Settings.getScreenScale(), Settings.getScreenHeight()*Settings.getScreenScale());
 		batch.end();
 		if (player.isClicked()) {
 			clickLocation = player.clickLocation();
