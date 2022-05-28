@@ -14,6 +14,8 @@ import interno.mygdx.casachorona.game.CasaChorona;
 import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.PlayerPointer;
 import interno.mygdx.casachorona.ui.DialogueBox;
+import interno.mygdx.casachorona.world.Location;
+import interno.mygdx.casachorona.world.Scene;
 
 public class GameScreen extends AbstractScreen {
 	
@@ -37,6 +39,7 @@ public class GameScreen extends AbstractScreen {
 		batch = new SpriteBatch();
 		player = new PlayerPointer(Settings.getScreenWidth()/2, Settings.getScreenHeight()/2);
 		controller = new ControlMouse(player);
+		//Scene cenario = new Scene(Location.SCENE1, 2);
 	}
 	
 	private void initUI() {
