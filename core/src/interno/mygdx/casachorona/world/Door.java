@@ -12,7 +12,6 @@ public class Door {
 		this.width = width;
 		this.height = height;
 		this.goesTo = goesTo;
-		System.out.println("x = " + this.x + " y = " + this.y + " x2 = " + (this.width + this.x) + " y2 = " + (this.height + this.y));
 	}
 
 	public int getX() {
