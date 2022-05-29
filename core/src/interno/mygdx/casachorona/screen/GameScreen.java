@@ -3,7 +3,6 @@ package interno.mygdx.casachorona.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -25,10 +24,9 @@ public class GameScreen extends AbstractScreen {
 	private World world;
 	
 	private ControlMouse controller;
-	private Vector2 clickLocation;
 	
 	private BackgroundTextures backgroundTextures;
-	private int currentSceneIndex;
+	private int currentSceneIndex = 0;
 	private Texture backgroundRender;
 	
 	private Skin skin;
@@ -45,10 +43,9 @@ public class GameScreen extends AbstractScreen {
 		
 		batch = new SpriteBatch();
 		backgroundTextures = new BackgroundTextures();
-		player = new PlayerPointer(Settings.getScreenWidth()/2, Settings.getScreenHeight()/2);
+		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2);
 		world = new World();
 		controller = new ControlMouse(player);
-		//Scene cenario = new Scene(Location.SCENE1, 2);
 	}
 	
 	private void initUI() {
@@ -75,14 +72,19 @@ public class GameScreen extends AbstractScreen {
 
 	@Override
 	public void render(float delta) {
-		batch.begin();
+		
 		currentSceneIndex = world.findCurrentSceneIndex(player.getCurrentLocation());
-		System.out.println(currentSceneIndex);
+		
+		batch.begin();
+		
+		//renderizar cenario
 		backgroundRender = backgroundTextures.getSceneArt(currentSceneIndex);
-		batch.draw(backgroundRender, 0, 0, Settings.getScreenWidth()*Settings.getScreenScale(), Settings.getScreenHeight()*Settings.getScreenScale());
+		batch.draw(backgroundRender, 0, 0, Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE, Settings.SCREEN_HEIGHT *Settings.SCREEN_SCALE);
+		
 		batch.end();
+		
 		if (player.isClicked()) {
-			clickLocation = player.clickLocation();
+			player.action(world, currentSceneIndex);
 		}
 	}
 

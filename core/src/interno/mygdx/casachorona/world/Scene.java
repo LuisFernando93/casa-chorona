@@ -28,7 +28,6 @@ public class Scene {
 		for (int i = 0; i < doors.length; i++) {
 			if (this.doors[i] == null) {
 				this.doors[i] = door;
-				System.out.println("porta adicionada na cena");
 				return;
 			}
 		}
