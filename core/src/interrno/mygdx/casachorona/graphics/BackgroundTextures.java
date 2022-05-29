@@ -3,6 +3,8 @@ package interrno.mygdx.casachorona.graphics;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
+import interno.mygdx.casachorona.world.Location;
+
 public class BackgroundTextures {
 	
 	private Texture scene1art;
@@ -15,13 +17,13 @@ public class BackgroundTextures {
 		this.scene3art = new Texture(Gdx.files.internal("graphics/portaPrincipal-scene3.png"));
 	}
 
-	public Texture getSceneArt(int sceneIndex) {
-		switch (sceneIndex) {
-		case 1: //cena 1
+	public Texture getSceneArt(Location sceneLocation) {
+		switch (sceneLocation) {
+		case SCENE1: //cena 1
 			return scene1art;
-		case 2: //cena 2
+		case SCENE2: //cena 2
 			return scene2art;			
-		case 3: //cena 3
+		case SCENE3: //cena 3
 			return scene3art;
 		default:
 			System.out.println("erro ao carregar cenario");

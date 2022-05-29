@@ -12,6 +12,7 @@ public class DesktopLauncher {
 		config.width = Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE;
 		config.height = Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE;
 		config.resizable = false;
+		config.title = "A Casa Chorona";
 		new LwjglApplication(new CasaChorona(), config);
 	}
 }

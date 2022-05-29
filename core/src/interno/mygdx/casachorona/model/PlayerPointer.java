@@ -2,7 +2,7 @@ package interno.mygdx.casachorona.model;
 
 import interno.mygdx.casachorona.world.Door;
 import interno.mygdx.casachorona.world.Location;
-import interno.mygdx.casachorona.world.World;
+import interno.mygdx.casachorona.world.Scene;
 
 public class PlayerPointer {
 	
@@ -53,9 +53,14 @@ public class PlayerPointer {
 		this.clickedY = y;
 	}
 	
-	public void action(World world,int currentLocationIndex) {
+	public void action(Scene currentScene) {
 		
-		Door door = world.checkForDoor(currentLocationIndex, clickedX, clickedY);
+		checkForDoor(currentScene);
+		
+	}
+	
+	public void checkForDoor(Scene currentScene) {
+		Door door = currentScene.checkForDoor(clickedX, clickedY);
 		if(door != null) {
 			this.currentLocation = door.getGoesTo();
 		}

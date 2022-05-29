@@ -14,6 +14,7 @@ import interno.mygdx.casachorona.game.CasaChorona;
 import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.PlayerPointer;
 import interno.mygdx.casachorona.ui.DialogueBox;
+import interno.mygdx.casachorona.world.Scene;
 import interno.mygdx.casachorona.world.World;
 import interrno.mygdx.casachorona.graphics.BackgroundTextures;
 
@@ -22,11 +23,11 @@ public class GameScreen extends AbstractScreen {
 	private SpriteBatch batch;
 	private PlayerPointer player;
 	private World world;
+	private Scene currentScene;
 	
 	private ControlMouse controller;
 	
 	private BackgroundTextures backgroundTextures;
-	private int currentSceneIndex = 0;
 	private Texture backgroundRender;
 	
 	private Skin skin;
@@ -73,18 +74,18 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	public void render(float delta) {
 		
-		currentSceneIndex = world.findCurrentSceneIndex(player.getCurrentLocation());
+		currentScene = world.findCurrentScene(player.getCurrentLocation());
 		
 		batch.begin();
 		
 		//renderizar cenario
-		backgroundRender = backgroundTextures.getSceneArt(currentSceneIndex);
+		backgroundRender = backgroundTextures.getSceneArt(currentScene.getLocation());
 		batch.draw(backgroundRender, 0, 0, Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE, Settings.SCREEN_HEIGHT *Settings.SCREEN_SCALE);
 		
 		batch.end();
 		
-		if (player.isClicked()) {
-			player.action(world, currentSceneIndex);
+		if (player.isClicked() & currentScene != null) {
+			player.action(currentScene);
 		}
 	}
 

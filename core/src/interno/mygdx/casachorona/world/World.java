@@ -26,27 +26,14 @@ public class World {
 		scenes[2].addDoor(new Door(8 * Settings.SCREEN_SCALE, 139 * Settings.SCREEN_SCALE, 39 * Settings.SCREEN_SCALE, 139  * Settings.SCREEN_SCALE, Location.SCENE2));
 	}
 	
-	public int findCurrentSceneIndex(Location currentLocation) {
+	public Scene findCurrentScene(Location currentLocation) {
 		for (int i = 0; i < scenes.length; i++) {
 			if (scenes[i].getLocation() == currentLocation) {
-				return i+1;
+				return scenes[i];
 			}
 		}
 		System.out.println("Cena atual nao encontrada");
-		return 0;
-	}
-	
-	public Door checkForDoor(int currentLocationIndex, int x, int y) { //procura se existe uma porta nesta coordenada, e retorna a porta se houver
-		currentLocationIndex--;
-		Door[] doors = scenes[currentLocationIndex].getDoors();
-		for (int i = 0; i < doors.length; i++) {;
-			if(x >= (doors[i].getX()) & x <= (doors[i].getX() + doors[i].getWidth()) & y >= doors[i].getY() & y <= (doors[i].getY() + doors[i].getHeight())) {
-				System.out.println("porta encontrada");
-				return doors[i];
-			}
-		}
-		System.out.println("porta nao encontrada");
-		return null; //porta nao encontrada
+		return null;
 	}
 	
 }
