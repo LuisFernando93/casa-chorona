@@ -27,12 +27,12 @@ public class GameScreen extends AbstractScreen {
 	
 	private ControlMouse controller;
 	
+	private ScreenViewport gameViewport;
+	
 	private BackgroundTextures backgroundTextures;
 	private Texture backgroundRender;
 	
-	private Skin skin;
-	
-	private int uiScale = 2;
+	private int uiScale = 1;
 	
 	private Stage uiStage;
 	private Table dialogRoot;
@@ -42,22 +42,27 @@ public class GameScreen extends AbstractScreen {
 	public GameScreen(CasaChorona game) {
 		super(game);
 		
+		gameViewport = new ScreenViewport();
 		batch = new SpriteBatch();
 		backgroundTextures = new BackgroundTextures();
 		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2);
 		world = new World();
 		controller = new ControlMouse(player);
+		
+		initUI();
 	}
 	
 	private void initUI() {
 		uiStage = new Stage(new ScreenViewport());
-		uiStage.getViewport().update(Gdx.graphics.getWidth()/uiScale, Gdx.graphics.getHeight()/uiScale, true);
+		uiStage.getViewport().update(Settings.SCREEN_WIDTH/uiScale, Settings.SCREEN_HEIGHT/uiScale, true);
 		
 		dialogRoot = new Table();
 		dialogRoot.setFillParent(true);
 		uiStage.addActor(dialogRoot);
 		
-		dialogueBox = new DialogueBox(skin);
+		dialogueBox = new DialogueBox(this.getApp().getSkin());
+		dialogueBox.animateText("Isto é um teste! Se o texto for\nescrito corretamente, esta funcionando.");
+		
 		
 		Table dialogTable = new Table();
 		dialogTable.add(dialogueBox).expand().align(Align.bottom).space(8f).row();
@@ -74,7 +79,9 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	public void render(float delta) {
 		
+		//gameViewport.apply();
 		currentScene = world.findCurrentScene(player.getCurrentLocation());
+		uiStage.act(delta);
 		
 		batch.begin();
 		
@@ -83,6 +90,8 @@ public class GameScreen extends AbstractScreen {
 		batch.draw(backgroundRender, 0, 0, Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE, Settings.SCREEN_HEIGHT *Settings.SCREEN_SCALE);
 		
 		batch.end();
+		
+		uiStage.draw();
 		
 		if (player.isClicked() & currentScene != null) {
 			player.action(currentScene);

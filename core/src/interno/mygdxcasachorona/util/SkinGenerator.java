@@ -16,12 +16,12 @@ public class SkinGenerator {
 	public static Skin generateSkin(AssetManager assetManager) {
 		Skin skin = new Skin();
 		
-		TextureAtlas uiAtlas = assetManager.get("res/graphics_packed/ui/uipack.atlas");
+		TextureAtlas uiAtlas = assetManager.get("graphics_packed/ui/uipack.atlas");
 		
 		NinePatch buttonSquareBlue = new NinePatch(uiAtlas.findRegion("dialoguebox"), 10, 10, 5, 5);
 		skin.add("dialoguebox", buttonSquareBlue);
 		
-		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("res/font/pkmnrsi.ttf"));
+		FreeTypeFontGenerator generator = new FreeTypeFontGenerator(Gdx.files.internal("font/pkmnrsi.ttf"));
 		FreeTypeFontParameter parameter = new FreeTypeFontParameter();
 		parameter.size = 12;
 		parameter.color = new Color(96f/255f, 96f/255f, 96f/255f, 1f);
@@ -35,7 +35,7 @@ public class SkinGenerator {
 		font.getData().setLineHeight(16f);
 		skin.add("font", font);
 		
-		BitmapFont smallFont = assetManager.get("res/font/small_letters_font.fnt", BitmapFont.class);
+		BitmapFont smallFont = assetManager.get("font/small_letters_font.fnt", BitmapFont.class);
 		skin.add("small_letters_font", smallFont);
 		
 		LabelStyle labelStyle = new LabelStyle();
