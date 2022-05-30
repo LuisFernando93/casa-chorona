@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
@@ -27,7 +26,7 @@ public class GameScreen extends AbstractScreen {
 	
 	private ControlMouse controller;
 	
-	private ScreenViewport gameViewport;
+	//private ScreenViewport gameViewport;
 	
 	private BackgroundTextures backgroundTextures;
 	private Texture backgroundRender;
@@ -42,7 +41,7 @@ public class GameScreen extends AbstractScreen {
 	public GameScreen(CasaChorona game) {
 		super(game);
 		
-		gameViewport = new ScreenViewport();
+		//gameViewport = new ScreenViewport();
 		batch = new SpriteBatch();
 		backgroundTextures = new BackgroundTextures();
 		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2);
