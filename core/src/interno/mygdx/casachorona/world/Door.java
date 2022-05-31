@@ -1,6 +1,8 @@
 package interno.mygdx.casachorona.world;
 
-public class Door {
+import interno.mygdx.casachorona.model.PlayerPointer;
+
+public class Door implements Interactable{
 
 	private int x,y;
 	private int width,height;
@@ -32,6 +34,11 @@ public class Door {
 	
 	public Location getGoesTo() {
 		return goesTo;
+	}
+
+	@Override
+	public void interact(PlayerPointer player) {
+		player.setCurrentLocation(this.goesTo);
 	}
 	
 }

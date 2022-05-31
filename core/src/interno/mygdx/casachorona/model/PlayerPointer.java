@@ -62,7 +62,7 @@ public class PlayerPointer {
 	public void checkForDoor(Scene currentScene) {
 		Door door = currentScene.checkForDoor(clickedX, clickedY);
 		if(door != null) {
-			this.currentLocation = door.getGoesTo();
+			door.interact(this);
 		}
 	}
 }
