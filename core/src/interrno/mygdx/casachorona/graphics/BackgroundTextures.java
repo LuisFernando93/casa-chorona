@@ -42,7 +42,7 @@ public class BackgroundTextures {
 			double rand = Math.random();
 			if (rand <= 0.95) {
 				return scene2art1;
-			} else if (rand < 0.95 && rand >= 0.98) {
+			} else if (rand > 0.95 && rand <= 0.98) {
 				return scene2art2;
 			} else return scene2art3;			
 		case SCENE3: //cena 3
