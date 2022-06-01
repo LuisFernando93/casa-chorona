@@ -11,9 +11,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
 import interno.mygdx.casachorona.control.ControlDialogue;
 import interno.mygdx.casachorona.control.ControlPlayer;
-import interno.mygdx.casachorona.dialogue.Dialogue;
 import interno.mygdx.casachorona.dialogue.DialogueDatabase;
-import interno.mygdx.casachorona.dialogue.DialogueNode;
 import interno.mygdx.casachorona.game.CasaChorona;
 import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.PlayerPointer;

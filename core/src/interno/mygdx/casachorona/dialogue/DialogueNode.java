@@ -7,23 +7,14 @@ public class DialogueNode {
 	private String text;
 	private int id;
 	
-	private NodeType type;
-	
-	public enum NodeType {
-		LINEAR,
-		END;
-	}
-	
 	public DialogueNode(String text, int id) {
 		this.id = id;
 		this.text = text;
-		this.type = NodeType.END;
 		this.pointer = -1;
 	}
 	
 	public void setPointer (int nodeId) {
 		this.pointer = nodeId;
-		this.type = NodeType.LINEAR;
 	}
 	
 	public int getPointer() {
@@ -37,8 +28,5 @@ public class DialogueNode {
 	public int getId() {
 		return this.id;
 	}
-	
-	public NodeType getType() {
-		return this.type;
-	}
+
 }
