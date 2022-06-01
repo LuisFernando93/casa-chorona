@@ -8,5 +8,6 @@ public enum Location {
 	SCENE5,
 	SCENE6,
 	SCENE7,
-	SCENE8;
+	SCENE8,
+	SCENE9;
 }

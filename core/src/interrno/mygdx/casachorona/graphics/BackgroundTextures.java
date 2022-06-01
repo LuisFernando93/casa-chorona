@@ -15,6 +15,7 @@ public class BackgroundTextures {
 	private Texture scene6art;
 	private Texture scene7art;
 	private Texture scene8art;
+	private Texture scene9art;
 	
 	
 	public BackgroundTextures() {
@@ -26,6 +27,7 @@ public class BackgroundTextures {
 		this.scene6art = new Texture(Gdx.files.internal("graphics/escritorio-scene6.png"));
 		this.scene7art = new Texture(Gdx.files.internal("graphics/quartoPais-scene7.png"));
 		this.scene8art = new Texture(Gdx.files.internal("graphics/sotao-scene8.png"));
+		this.scene9art = new Texture(Gdx.files.internal("graphics/quartoFanta-scene9.png"));
 	}
 
 	public Texture getSceneArt(Location sceneLocation) {
@@ -46,6 +48,8 @@ public class BackgroundTextures {
 			return scene7art;
 		case SCENE8: //cena 8
 			return scene8art;
+		case SCENE9:
+			return scene9art;
 		default:
 			System.out.println("erro ao carregar cenario");
 			return null;

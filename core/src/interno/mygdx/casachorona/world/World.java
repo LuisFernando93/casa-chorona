@@ -5,7 +5,7 @@ import interno.mygdx.casachorona.game.Settings;
 public class World {
 	
 	private Scene[] scenes;
-	private int nScenes = 8;
+	private int nScenes = 9;
 
 
 	public World() {
@@ -34,6 +34,8 @@ public class World {
 		scenes[6] = new Scene(Location.SCENE7, 1);
 		
 		scenes[7] = new Scene(Location.SCENE8, 1);
+		
+		scenes[8] = new Scene(Location.SCENE9, 1);
 	}
 	
 	public Scene findCurrentScene(Location currentLocation) {

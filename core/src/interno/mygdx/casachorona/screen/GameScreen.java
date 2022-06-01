@@ -60,7 +60,8 @@ public class GameScreen extends AbstractScreen {
 		uiStage.addActor(dialogRoot);
 		
 		dialogueBox = new DialogueBox(this.getApp().getSkin());
-		dialogueBox.animateText("Isto é um teste! Se o texto for\nescrito corretamente, esta funcionando.");
+		dialogueBox.setVisible(false);
+		//dialogueBox.animateText("Isto é um teste! Se o texto for\nescrito corretamente, esta funcionando.");
 		
 		
 		Table dialogTable = new Table();
