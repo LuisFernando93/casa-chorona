@@ -23,7 +23,6 @@ public class ControlDialogue extends InputAdapter {
 	
 	public void startDialogue(Dialogue dialogue) {
 		this.traverser = new DialogueTraverser(dialogue);
-		System.out.println(this.dialogueBox.isVisible());
 		dialogueBox.setVisible(true);
 		
 		DialogueNode node = traverser.getNode();

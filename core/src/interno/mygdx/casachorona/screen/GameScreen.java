@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import interno.mygdx.casachorona.control.ControlDialogue;
 import interno.mygdx.casachorona.control.ControlPlayer;
 import interno.mygdx.casachorona.dialogue.Dialogue;
+import interno.mygdx.casachorona.dialogue.DialogueDatabase;
 import interno.mygdx.casachorona.dialogue.DialogueNode;
 import interno.mygdx.casachorona.game.CasaChorona;
 import interno.mygdx.casachorona.game.Settings;
@@ -42,9 +43,7 @@ public class GameScreen extends AbstractScreen {
 	private Stage uiStage;
 	private Table dialogRoot;
 	private DialogueBox dialogueBox;
-	
-	private Dialogue dialogue;
-	
+	private DialogueDatabase dialogueDatabase;
 
 	public GameScreen(CasaChorona game) {
 		super(game);
@@ -55,6 +54,7 @@ public class GameScreen extends AbstractScreen {
 		backgroundTextures = new BackgroundTextures();
 		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2);
 		world = new World();
+		dialogueDatabase = new DialogueDatabase();
 		
 		playerController = new ControlPlayer(player, dialogueBox);
 		dialogueController = new ControlDialogue(dialogueBox);
@@ -62,24 +62,7 @@ public class GameScreen extends AbstractScreen {
 		multiplexer.addProcessor(0, dialogueController);
 		multiplexer.addProcessor(1, playerController);
 		
-		
-		dialogue = new Dialogue();
-		
-		DialogueNode node1 = new DialogueNode("Isto é um teste", 0);
-		DialogueNode node2 = new DialogueNode("Estou verificando o sistema de dialogo", 1);
-		DialogueNode node3 = new DialogueNode("Parece estar funcionando corretamente", 2);
-		DialogueNode node4 = new DialogueNode("Fim do teste", 3);
-		
-		node1.setPointer(1);
-		node2.setPointer(2);
-		node3.setPointer(3);
-		
-		dialogue.addDialogueNode(node1);
-		dialogue.addDialogueNode(node2);
-		dialogue.addDialogueNode(node3);
-		dialogue.addDialogueNode(node4);
-		
-		dialogueController.startDialogue(dialogue);
+		dialogueController.startDialogue(dialogueDatabase.getDialogue(0));
 	}
 	
 	private void initUI() {
