@@ -1,13 +1,14 @@
 package interno.mygdx.casachorona.control;
 
+import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputAdapter;
 import interno.mygdx.casachorona.model.PlayerPointer;
 
-public class ControlMouse extends InputAdapter {
+public class ControlPlayer extends InputAdapter {
 	
 	private PlayerPointer player;
 
-	public ControlMouse(PlayerPointer playerP) {
+	public ControlPlayer(PlayerPointer playerP) {
 		this.player = playerP;
 	}
 	
@@ -21,9 +22,12 @@ public class ControlMouse extends InputAdapter {
 	
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-		player.hasClicked(screenX, screenY);
-		System.out.println("Clicou! posicao x: " + screenX + " posicao y: " + screenY);
-		return super.touchUp(screenX, screenY, pointer, button);
+		if (button == Buttons.LEFT) {
+			player.hasClicked(screenX, screenY);
+			System.out.println("Clicou! posicao x: " + screenX + " posicao y: " + screenY);
+			return true;
+		}
+		return false;
 	}
 	
 }

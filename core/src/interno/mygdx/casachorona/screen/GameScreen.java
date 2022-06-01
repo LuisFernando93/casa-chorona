@@ -8,7 +8,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-import interno.mygdx.casachorona.control.ControlMouse;
+import interno.mygdx.casachorona.control.ControlPlayer;
 import interno.mygdx.casachorona.game.CasaChorona;
 import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.PlayerPointer;
@@ -24,7 +24,7 @@ public class GameScreen extends AbstractScreen {
 	private World world;
 	private Scene currentScene;
 	
-	private ControlMouse controller;
+	private ControlPlayer playerController;
 	
 	//private ScreenViewport gameViewport;
 	
@@ -46,7 +46,7 @@ public class GameScreen extends AbstractScreen {
 		backgroundTextures = new BackgroundTextures();
 		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2);
 		world = new World();
-		controller = new ControlMouse(player);
+		playerController = new ControlPlayer(player);
 		
 		initUI();
 	}
@@ -73,7 +73,7 @@ public class GameScreen extends AbstractScreen {
 
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(controller);
+		Gdx.input.setInputProcessor(playerController);
 	}
 
 	@Override
