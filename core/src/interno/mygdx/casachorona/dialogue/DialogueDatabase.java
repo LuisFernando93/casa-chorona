@@ -8,7 +8,7 @@ public class DialogueDatabase {
 		Dialogue dialogue0 = new Dialogue();
 		
 		DialogueNode node1 = new DialogueNode("Isto é um teste", 0);
-		DialogueNode node2 = new DialogueNode("Estou verificando o sistema de dialogo", 1);
+		DialogueNode node2 = new DialogueNode("Estou verificando o sistema de dialogo \nã  õ  ó  à  ê  ô  á ", 1);
 		DialogueNode node3 = new DialogueNode("Parece estar funcionando corretamente", 2);
 		DialogueNode node4 = new DialogueNode("Fim do teste", 3);
 		

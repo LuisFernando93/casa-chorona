@@ -8,7 +8,9 @@ import interno.mygdx.casachorona.world.Location;
 public class BackgroundTextures {
 	
 	private Texture scene1art;
-	private Texture scene2art;
+	private Texture scene2art1;
+	private Texture scene2art2;
+	private Texture scene2art3;
 	private Texture scene3art;
 	private Texture scene4art;
 	private Texture scene5art;
@@ -20,7 +22,9 @@ public class BackgroundTextures {
 	
 	public BackgroundTextures() {
 		this.scene1art = new Texture(Gdx.files.internal("graphics/garagem-scene1.png"));
-		this.scene2art = new Texture(Gdx.files.internal("graphics/cozinha-scene2-1.png"));
+		this.scene2art1 = new Texture(Gdx.files.internal("graphics/cozinha-scene2-1.png"));
+		this.scene2art2 = new Texture(Gdx.files.internal("graphics/cozinha-scene2-2.png"));
+		this.scene2art3 = new Texture(Gdx.files.internal("graphics/cozinha-scene2-3.png"));
 		this.scene3art = new Texture(Gdx.files.internal("graphics/portaPrincipal-scene3.png"));
 		this.scene4art = new Texture(Gdx.files.internal("graphics/sala-scene4.png"));
 		this.scene5art = new Texture(Gdx.files.internal("graphics/corredor-scene5.png"));
@@ -35,7 +39,12 @@ public class BackgroundTextures {
 		case SCENE1: //cena 1
 			return scene1art;
 		case SCENE2: //cena 2
-			return scene2art;			
+			double rand = Math.random();
+			if (rand <= 0.95) {
+				return scene2art1;
+			} else if (rand < 0.95 && rand >= 0.98) {
+				return scene2art2;
+			} else return scene2art3;			
 		case SCENE3: //cena 3
 			return scene3art;
 		case SCENE4: //cena 4
