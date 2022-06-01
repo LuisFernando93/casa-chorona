@@ -23,20 +23,15 @@ public class ControlDialogue extends InputAdapter {
 	
 	public void startDialogue(Dialogue dialogue) {
 		this.traverser = new DialogueTraverser(dialogue);
+		System.out.println(this.dialogueBox.isVisible());
 		dialogueBox.setVisible(true);
 		
 		DialogueNode node = traverser.getNode();
 		dialogueBox.animateText(node.getText());
 	}
 	
-	public void update(float delta) {
-		if (dialogueBox.isFinished() && traverser != null) {
-			DialogueNode nextNode = traverser.getNode();
-		}
-	}
-	
-	private void progress(int index) {
-		DialogueNode node = traverser.getNextNode(index);
+	private void progress() {
+		DialogueNode node = traverser.getNextNode();
 		dialogueBox.animateText(node.getText());
 	}
 	
@@ -54,7 +49,13 @@ public class ControlDialogue extends InputAdapter {
 		}
 		if (traverser != null && button == Buttons.LEFT) {
 			DialogueNode thisNode = traverser.getNode();
-			
+			if (thisNode.getPointer() == -1) { //fim do dialogo
+				this.traverser = null;
+				dialogueBox.setVisible(false);
+			} else {
+				progress();
+			}
+			return true;
 		}
 		
 		if (dialogueBox.isVisible()) {

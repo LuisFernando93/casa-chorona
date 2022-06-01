@@ -10,7 +10,7 @@ public class DialogueTraverser {
 		currentNode = dialogue.getNode(dialogue.getStart());
 	}
 	
-	public DialogueNode getNextNode(int pointerIndex) {
+	public DialogueNode getNextNode() {
 		if (currentNode.getPointer() == -1) {
 			return null;
 		}

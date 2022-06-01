@@ -1,6 +1,7 @@
 package interno.mygdx.casachorona.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -8,7 +9,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import interno.mygdx.casachorona.control.ControlDialogue;
 import interno.mygdx.casachorona.control.ControlPlayer;
+import interno.mygdx.casachorona.dialogue.Dialogue;
+import interno.mygdx.casachorona.dialogue.DialogueNode;
 import interno.mygdx.casachorona.game.CasaChorona;
 import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.PlayerPointer;
@@ -24,7 +28,9 @@ public class GameScreen extends AbstractScreen {
 	private World world;
 	private Scene currentScene;
 	
+	private InputMultiplexer multiplexer;
 	private ControlPlayer playerController;
+	private ControlDialogue dialogueController;
 	
 	//private ScreenViewport gameViewport;
 	
@@ -37,18 +43,43 @@ public class GameScreen extends AbstractScreen {
 	private Table dialogRoot;
 	private DialogueBox dialogueBox;
 	
+	private Dialogue dialogue;
+	
 
 	public GameScreen(CasaChorona game) {
 		super(game);
 		
 		//gameViewport = new ScreenViewport();
+		initUI();
 		batch = new SpriteBatch();
 		backgroundTextures = new BackgroundTextures();
 		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2);
 		world = new World();
-		playerController = new ControlPlayer(player);
 		
-		initUI();
+		playerController = new ControlPlayer(player, dialogueBox);
+		dialogueController = new ControlDialogue(dialogueBox);
+		multiplexer = new InputMultiplexer();
+		multiplexer.addProcessor(0, dialogueController);
+		multiplexer.addProcessor(1, playerController);
+		
+		
+		dialogue = new Dialogue();
+		
+		DialogueNode node1 = new DialogueNode("Isto é um teste", 0);
+		DialogueNode node2 = new DialogueNode("Estou verificando o sistema de dialogo", 1);
+		DialogueNode node3 = new DialogueNode("Parece estar funcionando corretamente", 2);
+		DialogueNode node4 = new DialogueNode("Fim do teste", 3);
+		
+		node1.setPointer(1);
+		node2.setPointer(2);
+		node3.setPointer(3);
+		
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		
+		dialogueController.startDialogue(dialogue);
 	}
 	
 	private void initUI() {
@@ -61,7 +92,6 @@ public class GameScreen extends AbstractScreen {
 		
 		dialogueBox = new DialogueBox(this.getApp().getSkin());
 		dialogueBox.setVisible(false);
-		//dialogueBox.animateText("Isto é um teste! Se o texto for\nescrito corretamente, esta funcionando.");
 		
 		
 		Table dialogTable = new Table();
@@ -73,7 +103,7 @@ public class GameScreen extends AbstractScreen {
 
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(playerController);
+		Gdx.input.setInputProcessor(multiplexer);
 	}
 
 	@Override
