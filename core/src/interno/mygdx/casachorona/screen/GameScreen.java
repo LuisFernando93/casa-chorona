@@ -41,7 +41,6 @@ public class GameScreen extends AbstractScreen {
 	private Stage uiStage;
 	private Table dialogRoot;
 	private DialogueBox dialogueBox;
-	private DialogueDatabase dialogueDatabase;
 
 	public GameScreen(CasaChorona game) {
 		super(game);
@@ -52,7 +51,7 @@ public class GameScreen extends AbstractScreen {
 		backgroundTextures = new BackgroundTextures();
 		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2);
 		world = new World();
-		dialogueDatabase = new DialogueDatabase();
+		DialogueDatabase.CreateDialogueDatabase();
 		
 		playerController = new ControlPlayer(player, dialogueBox);
 		dialogueController = new ControlDialogue(dialogueBox);
@@ -60,7 +59,7 @@ public class GameScreen extends AbstractScreen {
 		multiplexer.addProcessor(0, dialogueController);
 		multiplexer.addProcessor(1, playerController);
 		
-		dialogueController.startDialogue(dialogueDatabase.getDialogue(0));
+		dialogueController.startDialogue(DialogueDatabase.getDialogue(0));
 	}
 	
 	private void initUI() {

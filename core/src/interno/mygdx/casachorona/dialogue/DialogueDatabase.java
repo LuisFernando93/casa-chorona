@@ -2,9 +2,9 @@ package interno.mygdx.casachorona.dialogue;
 
 public class DialogueDatabase {
 
-	private Dialogue[] dialogues = new Dialogue[1];
+	private static Dialogue[] dialogues = new Dialogue[1];
 	
-	public DialogueDatabase() {
+	public static void CreateDialogueDatabase() {
 		Dialogue dialogue0 = new Dialogue();
 		
 		DialogueNode node1 = new DialogueNode("Isto é um teste", 0);
@@ -21,10 +21,10 @@ public class DialogueDatabase {
 		dialogue0.addDialogueNode(node3);
 		dialogue0.addDialogueNode(node4);
 		
-		this.dialogues[0] = dialogue0;
+		DialogueDatabase.dialogues[0] = dialogue0;
 	}
 	
-	public Dialogue getDialogue(int id) {
-		return this.dialogues[id];
+	public static Dialogue getDialogue(int id) {
+		return DialogueDatabase.dialogues[id];
 	}
 }
