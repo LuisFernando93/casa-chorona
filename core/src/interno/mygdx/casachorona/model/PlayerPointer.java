@@ -12,11 +12,13 @@ public class PlayerPointer {
 	private int clickedY;
 	private boolean clicked = false;
 	private Location currentLocation;
+	private PointerType pointerType;
 	
 	public PlayerPointer(int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.currentLocation = Location.SCENE1;
+		this.pointerType = PointerType.DEFAULT;
 	}
 	
 	public int getX() {
@@ -33,6 +35,10 @@ public class PlayerPointer {
 	
 	public void setCurrentLocation(Location currentLocation) {
 		this.currentLocation = currentLocation;
+	}
+	
+	public PointerType getPointerType() {
+		return this.pointerType;
 	}
 	
 	public void movePointer(int x, int y) {

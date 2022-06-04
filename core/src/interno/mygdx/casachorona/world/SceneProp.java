@@ -2,12 +2,12 @@ package interno.mygdx.casachorona.world;
 
 import interno.mygdx.casachorona.model.PlayerPointer;
 
-public class Prop implements Interactable {
+public class SceneProp implements Interactable {
 	
 	int x, y, width, height;
 	int id;
 
-	public Prop(int x, int y, int width, int height, int id) {
+	public SceneProp(int x, int y, int width, int height, int id) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
