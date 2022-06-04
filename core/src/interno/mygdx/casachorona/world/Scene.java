@@ -36,9 +36,11 @@ public class Scene {
 	
 	public Door checkForDoor(int x, int y) { //procura se existe uma porta nesta coordenada, e retorna a porta se houver
 		for (int i = 0; i < this.doors.length; i++) {;
-			if(x >= (this.doors[i].getX()) & x <= (this.doors[i].getX() + this.doors[i].getWidth()) & y >= this.doors[i].getY() & y <= (this.doors[i].getY() + this.doors[i].getHeight())) {
-				System.out.println("porta encontrada");
-				return this.doors[i];
+			if (doors[i] != null) {
+				if(x >= (this.doors[i].getX()) & x <= (this.doors[i].getX() + this.doors[i].getWidth()) & y >= this.doors[i].getY() & y <= (this.doors[i].getY() + this.doors[i].getHeight())) {
+					System.out.println("porta encontrada");
+					return this.doors[i];
+				}
 			}
 		}
 		System.out.println("porta nao encontrada");
