@@ -2,6 +2,9 @@ package interno.mygdx.casachorona.screen;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.graphics.Cursor;
+import com.badlogic.gdx.graphics.Cursor.SystemCursor;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -49,6 +52,12 @@ public class GameScreen extends AbstractScreen {
 
 	public GameScreen(CasaChorona game) {
 		super(game);
+		
+		Pixmap pixmap = new Pixmap(Gdx.files.internal("graphics/cursorHidden.png"));
+		int xHotspot = 15, yHotspot = 15;
+		Cursor cursor = Gdx.graphics.newCursor(pixmap, xHotspot, yHotspot);
+		pixmap.dispose(); // We don't need the pixmap anymore
+		Gdx.graphics.setCursor(cursor);
 		
 		initUI();
 		batch = new SpriteBatch();

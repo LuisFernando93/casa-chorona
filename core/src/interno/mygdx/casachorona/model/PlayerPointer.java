@@ -18,7 +18,7 @@ public class PlayerPointer {
 		this.x = x;
 		this.y = y;
 		this.currentLocation = Location.SCENE1;
-		this.pointerType = PointerType.LEFT;
+		this.pointerType = PointerType.DEFAULT;
 	}
 	
 	public int getX() {
