@@ -58,13 +58,14 @@ public class Door implements Interactable{
 	}
 
 	@Override
-	public void interact(PlayerPointer player) {
+	public boolean interact(PlayerPointer player) {
 		player.setCurrentLocation(this.goesTo);
 		if (stair) {
 			SoundPlayer.playSFX("stair");
 		} else {
 			SoundPlayer.playSFX("door");
 		}
+		return true;
 	}
 	
 }

@@ -1,8 +1,10 @@
 package interno.mygdx.casachorona.model;
 
+import interno.mygdx.casachorona.ui.Inventory;
 import interno.mygdx.casachorona.world.Door;
 import interno.mygdx.casachorona.world.Location;
 import interno.mygdx.casachorona.world.Scene;
+import interno.mygdx.casachorona.world.World;
 
 public class PlayerPointer {
 	
@@ -13,12 +15,16 @@ public class PlayerPointer {
 	private boolean clicked = false;
 	private Location currentLocation;
 	private PointerType pointerType;
+	private World world;
+	private Inventory inventory;
 	
-	public PlayerPointer(int x, int y) {
+	public PlayerPointer(int x, int y, World world, Inventory inventory) {
 		this.x = x;
 		this.y = y;
 		this.currentLocation = Location.SCENE1;
 		this.pointerType = PointerType.DEFAULT;
+		this.world = world;
+		this.inventory = inventory;
 	}
 	
 	public int getX() {
@@ -44,6 +50,18 @@ public class PlayerPointer {
 	public void movePointer(int x, int y) {
 		this.x = x;
 		this.y = y;
+		Item item = inventory.getItem(x, y);
+		if (item != null && item.isPickedUp()) {
+			this.pointerType = PointerType.HIGHLIGHT;
+			return;
+		}
+		Scene scene = world.findCurrentScene(this.currentLocation);
+		Door door = scene.getDoor(x, y);
+		if (door != null) {
+			this.pointerType = door.getPointerType();
+			return;
+		} 
+		this.pointerType = PointerType.DEFAULT;
 	}
 	
 	public boolean isClicked() {
@@ -59,16 +77,33 @@ public class PlayerPointer {
 		this.clickedY = y;
 	}
 	
-	public void action(Scene currentScene) {
+	public void action() {
 		
-		checkForDoor(currentScene);
+		if (checkForItem()) {
+			return;
+		}
+		checkForDoor();
 		
 	}
 	
-	public void checkForDoor(Scene currentScene) {
-		Door door = currentScene.checkForDoor(clickedX, clickedY);
+	public boolean checkForItem() {
+		Item item = inventory.getItem(clickedX, clickedY);
+		if(item != null) {
+			if (item.interact(this)) {
+				//mudar ponteiro
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	public void checkForDoor() {
+		Scene currentScene = world.findCurrentScene(this.currentLocation);
+		Door door = currentScene.getDoor(clickedX, clickedY);
 		if(door != null) {
-			door.interact(this);
+			if (door.interact(this)) {
+				this.pointerType = PointerType.DEFAULT;
+			}
 		}
 	}
 	

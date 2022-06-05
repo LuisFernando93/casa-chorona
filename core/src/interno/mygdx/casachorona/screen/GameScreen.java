@@ -3,7 +3,6 @@ package interno.mygdx.casachorona.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Cursor;
-import com.badlogic.gdx.graphics.Cursor.SystemCursor;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -21,6 +20,7 @@ import interno.mygdx.casachorona.game.CasaChorona;
 import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.PlayerPointer;
 import interno.mygdx.casachorona.ui.DialogueBox;
+import interno.mygdx.casachorona.ui.Inventory;
 import interno.mygdx.casachorona.world.Scene;
 import interno.mygdx.casachorona.world.World;
 import interrno.mygdx.casachorona.graphics.AssetTextures;
@@ -32,6 +32,7 @@ public class GameScreen extends AbstractScreen {
 	private PlayerPointer player;
 	private World world;
 	private Scene currentScene;
+	private Inventory inventory;
 	
 	private InputMultiplexer multiplexer;
 	private ControlPlayer playerController;
@@ -43,6 +44,7 @@ public class GameScreen extends AbstractScreen {
 	private AssetTextures assetTextures;
 	private Texture backgroundRender;
 	private Sprite playerSprite;
+	private Sprite inventorySprite;
 	
 	private int uiScale = 1;
 	
@@ -63,9 +65,12 @@ public class GameScreen extends AbstractScreen {
 		batch = new SpriteBatch();
 		backgroundTextures = new BackgroundTextures();
 		assetTextures = new AssetTextures();
+		inventorySprite = assetTextures.getInventoryBox();
 		
-		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2);
 		world = new World();
+		inventory = new Inventory();
+		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2, world, inventory);
+		
 		DialogueDatabase.CreateDialogueDatabase();
 		
 		playerController = new ControlPlayer(player, dialogueBox);
@@ -115,15 +120,23 @@ public class GameScreen extends AbstractScreen {
 		backgroundRender = backgroundTextures.getSceneArt(currentScene.getLocation());
 		batch.draw(backgroundRender, 0, 0, Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE, Settings.SCREEN_HEIGHT *Settings.SCREEN_SCALE);
 		
+		for (int i = 0; i < 5; i++) {
+			batch.draw(inventorySprite, (45 + i*(inventorySprite.getWidth()+26))*Settings.SCREEN_SCALE, (Settings.SCREEN_HEIGHT-inventorySprite.getHeight()/2 - 5)*Settings.SCREEN_SCALE, inventorySprite.getWidth(), inventorySprite.getHeight());
+			if (inventory.hasItem(i)) {
+				batch.draw(assetTextures.getItem(i), (45 + i*(inventorySprite.getWidth()+26))*Settings.SCREEN_SCALE, (Settings.SCREEN_HEIGHT-inventorySprite.getHeight()/2 - 5)*Settings.SCREEN_SCALE, inventorySprite.getWidth(), inventorySprite.getHeight());
+			}
+		}
+		
+		
 		playerSprite = assetTextures.getPlayerPointer(player.getPointerType());
-		batch.draw(playerSprite, player.getX(), Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight(), playerSprite.getWidth(), playerSprite.getHeight());
+		batch.draw(assetTextures.getPlayerPointer(player.getPointerType()), player.getX(), Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight(), playerSprite.getWidth(), playerSprite.getHeight());
 		
 		batch.end();
 		
 		uiStage.draw();
 		
-		if (player.isClicked() & currentScene != null) {
-			player.action(currentScene);
+		if (player.isClicked()) {
+			player.action();
 		}
 	}
 

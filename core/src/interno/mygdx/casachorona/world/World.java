@@ -24,7 +24,7 @@ public class World {
 		
 		scenes[2] = new Scene(Location.SCENE3, 3);
 		scenes[2].addDoor(new Door(8, 139, 39, 139, Location.SCENE6, false, false, PointerType.LEFT));    //porta esquerda 
-		scenes[2].addDoor(new Door(172, 300, 135, 20, Location.SCENE2, false, false, PointerType.DOWN));  //porta atras
+		scenes[2].addDoor(new Door(172, 290, 135, 30, Location.SCENE2, false, false, PointerType.DOWN));  //porta atras
 		scenes[2].addDoor(new Door(443, 101, 36, 177, Location.SCENE4, false, false, PointerType.RIGHT));  //porta direita
 		
 		scenes[3] = new Scene(Location.SCENE4, 2);
@@ -44,7 +44,7 @@ public class World {
 		scenes[6].addDoor(new Door(340, 117, 61, 120, Location.SCENE5, false, false, PointerType.UP)); //porta unica
 		
 		scenes[7] = new Scene(Location.SCENE8, 1);
-		scenes[7].addDoor(new Door(173, 306, 114, 14, Location.SCENE5, false, true, PointerType.DOWN)); //porta atras
+		scenes[7].addDoor(new Door(173, 290, 114, 30, Location.SCENE5, false, true, PointerType.DOWN)); //porta atras
 		
 		scenes[8] = new Scene(Location.SCENE9, 1);
 		scenes[8].addDoor(new Door(26, 142, 30, 115, Location.SCENE5, false, false, PointerType.LEFT)); //porta unica

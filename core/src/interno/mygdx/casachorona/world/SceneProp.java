@@ -36,7 +36,7 @@ public class SceneProp implements Interactable {
 	}
 
 	@Override
-	public void interact(PlayerPointer player) {
-		
+	public boolean interact(PlayerPointer player) {
+		return true;
 	}
 }
