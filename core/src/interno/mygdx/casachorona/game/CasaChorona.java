@@ -24,7 +24,7 @@ public class CasaChorona extends Game {
 		
 		assetManager = new AssetManager();
 		assetManager.load("graphics_packed/ui/uipack.atlas", TextureAtlas.class);
-		assetManager.load("font/small_letters_font.fnt", BitmapFont.class);
+		assetManager.load("font/Gamer.fnt", BitmapFont.class);
 		assetManager.finishLoading();
 		
 		skin = SkinGenerator.generateSkin(assetManager);

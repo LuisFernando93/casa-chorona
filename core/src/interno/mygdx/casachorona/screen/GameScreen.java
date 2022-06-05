@@ -60,7 +60,7 @@ public class GameScreen extends AbstractScreen {
 		multiplexer.addProcessor(0, dialogueController);
 		multiplexer.addProcessor(1, playerController);
 		
-		//dialogueController.startDialogue(DialogueDatabase.getDialogue(0));
+		dialogueController.startDialogue(DialogueDatabase.getDialogue(0));
 	}
 	
 	private void initUI() {
