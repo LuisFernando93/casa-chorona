@@ -9,6 +9,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
+import audio.SoundPlayer;
 import interno.mygdx.casachorona.control.ControlDialogue;
 import interno.mygdx.casachorona.control.ControlPlayer;
 import interno.mygdx.casachorona.dialogue.DialogueDatabase;
@@ -45,10 +46,10 @@ public class GameScreen extends AbstractScreen {
 	public GameScreen(CasaChorona game) {
 		super(game);
 		
-		//gameViewport = new ScreenViewport();
 		initUI();
 		batch = new SpriteBatch();
 		backgroundTextures = new BackgroundTextures();
+		
 		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2);
 		world = new World();
 		DialogueDatabase.CreateDialogueDatabase();
@@ -59,7 +60,7 @@ public class GameScreen extends AbstractScreen {
 		multiplexer.addProcessor(0, dialogueController);
 		multiplexer.addProcessor(1, playerController);
 		
-		dialogueController.startDialogue(DialogueDatabase.getDialogue(0));
+		//dialogueController.startDialogue(DialogueDatabase.getDialogue(0));
 	}
 	
 	private void initUI() {
@@ -84,6 +85,7 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	public void show() {
 		Gdx.input.setInputProcessor(multiplexer);
+		SoundPlayer.playSoundtrack("game");
 	}
 
 	@Override
