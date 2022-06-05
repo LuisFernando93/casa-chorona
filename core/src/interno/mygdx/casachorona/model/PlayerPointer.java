@@ -18,7 +18,7 @@ public class PlayerPointer {
 		this.x = x;
 		this.y = y;
 		this.currentLocation = Location.SCENE1;
-		this.pointerType = PointerType.DEFAULT;
+		this.pointerType = PointerType.LEFT;
 	}
 	
 	public int getX() {
@@ -70,5 +70,9 @@ public class PlayerPointer {
 		if(door != null) {
 			door.interact(this);
 		}
+	}
+	
+	public void render(float delta) {
+		
 	}
 }

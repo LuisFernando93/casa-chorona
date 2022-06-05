@@ -3,6 +3,7 @@ package interno.mygdx.casachorona.screen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -19,6 +20,7 @@ import interno.mygdx.casachorona.model.PlayerPointer;
 import interno.mygdx.casachorona.ui.DialogueBox;
 import interno.mygdx.casachorona.world.Scene;
 import interno.mygdx.casachorona.world.World;
+import interrno.mygdx.casachorona.graphics.AssetTextures;
 import interrno.mygdx.casachorona.graphics.BackgroundTextures;
 
 public class GameScreen extends AbstractScreen {
@@ -35,7 +37,9 @@ public class GameScreen extends AbstractScreen {
 	//private ScreenViewport gameViewport;
 	
 	private BackgroundTextures backgroundTextures;
+	private AssetTextures assetTextures;
 	private Texture backgroundRender;
+	private Sprite playerSprite;
 	
 	private int uiScale = 1;
 	
@@ -49,6 +53,7 @@ public class GameScreen extends AbstractScreen {
 		initUI();
 		batch = new SpriteBatch();
 		backgroundTextures = new BackgroundTextures();
+		assetTextures = new AssetTextures();
 		
 		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2);
 		world = new World();
@@ -60,7 +65,7 @@ public class GameScreen extends AbstractScreen {
 		multiplexer.addProcessor(0, dialogueController);
 		multiplexer.addProcessor(1, playerController);
 		
-		dialogueController.startDialogue(DialogueDatabase.getDialogue(0));
+		//dialogueController.startDialogue(DialogueDatabase.getDialogue(0)); //teste de dialogo
 	}
 	
 	private void initUI() {
@@ -100,6 +105,9 @@ public class GameScreen extends AbstractScreen {
 		//renderizar cenario
 		backgroundRender = backgroundTextures.getSceneArt(currentScene.getLocation());
 		batch.draw(backgroundRender, 0, 0, Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE, Settings.SCREEN_HEIGHT *Settings.SCREEN_SCALE);
+		
+		playerSprite = assetTextures.getPlayerPointer(player.getPointerType());
+		batch.draw(playerSprite, player.getX(), Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight(), playerSprite.getWidth(), playerSprite.getHeight());
 		
 		batch.end();
 		

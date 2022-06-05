@@ -27,7 +27,7 @@ public class ControlPlayer extends InputAdapter {
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		if (button == Buttons.LEFT && !dialogueBox.isVisible()) {
 			player.hasClicked(screenX, screenY);
-			System.out.println("Clicou! posicao x: " + screenX + " posicao y: " + screenY);
+			//System.out.println("Clicou! posicao x: " + screenX + " posicao y: " + screenY);
 			return true;
 		}
 		return false;
