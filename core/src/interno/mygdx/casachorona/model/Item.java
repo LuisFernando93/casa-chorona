@@ -52,6 +52,7 @@ public class Item implements Interactable{
 	@Override
 	public boolean interact(PlayerPointer player) {
 		System.out.println("item selecionado");
+		player.selectsItem(this.type);
 		return true;
 	}
 	

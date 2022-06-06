@@ -6,5 +6,10 @@ public enum PointerType {
 	UP,
 	DOWN,
 	LEFT,
-	RIGHT;
+	RIGHT,
+	FLASHLIGHT,
+	HAMMER,
+	PEN,
+	KEY1,
+	KEY2;
 }

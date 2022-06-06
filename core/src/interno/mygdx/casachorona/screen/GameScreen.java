@@ -36,7 +36,7 @@ public class GameScreen extends AbstractScreen {
 	
 	private InputMultiplexer multiplexer;
 	private ControlPlayer playerController;
-	private ControlDialogue dialogueController;
+	private static ControlDialogue dialogueController;
 	
 	//private ScreenViewport gameViewport;
 	
@@ -80,6 +80,10 @@ public class GameScreen extends AbstractScreen {
 		multiplexer.addProcessor(1, playerController);
 		
 		//dialogueController.startDialogue(DialogueDatabase.getDialogue(0)); //teste de dialogo
+	}
+	
+	public static ControlDialogue getDialogueController() {
+		return dialogueController;
 	}
 	
 	private void initUI() {
@@ -129,7 +133,10 @@ public class GameScreen extends AbstractScreen {
 		
 		
 		playerSprite = assetTextures.getPlayerPointer(player.getPointerType());
-		batch.draw(assetTextures.getPlayerPointer(player.getPointerType()), player.getX(), Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight(), playerSprite.getWidth(), playerSprite.getHeight());
+		if (player.hasSelectedItem()) {
+			batch.draw(assetTextures.getPlayerPointer(player.getPointerType()), player.getX(), Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight(), 32, 32);
+		} else batch.draw(assetTextures.getPlayerPointer(player.getPointerType()), player.getX(), Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight(), playerSprite.getWidth(), playerSprite.getHeight());
+		
 		
 		batch.end();
 		

@@ -13,16 +13,16 @@ public class PlayerPointer {
 	private int clickedX;
 	private int clickedY;
 	private boolean clicked = false;
-	private Location currentLocation;
-	private PointerType pointerType;
+	private Location currentLocation = Location.SCENE1;
+	private PointerType pointerType = PointerType.DEFAULT;
 	private World world;
 	private Inventory inventory;
+	private boolean selectedItem = false;
+	private ItemType selectedItemType = null;
 	
 	public PlayerPointer(int x, int y, World world, Inventory inventory) {
 		this.x = x;
 		this.y = y;
-		this.currentLocation = Location.SCENE1;
-		this.pointerType = PointerType.DEFAULT;
 		this.world = world;
 		this.inventory = inventory;
 	}
@@ -50,18 +50,20 @@ public class PlayerPointer {
 	public void movePointer(int x, int y) {
 		this.x = x;
 		this.y = y;
-		Item item = inventory.getItem(x, y);
-		if (item != null && item.isPickedUp()) {
-			this.pointerType = PointerType.HIGHLIGHT;
-			return;
+		if(!this.selectedItem) {
+			Item item = inventory.getItem(x, y);
+			if (item != null && item.isPickedUp()) {
+				this.pointerType = PointerType.HIGHLIGHT;
+				return;
+			}
+			Scene scene = world.findCurrentScene(this.currentLocation);
+			Door door = scene.getDoor(x, y);
+			if (door != null) {
+				this.pointerType = door.getPointerType();
+				return;
+			} 
+			this.pointerType = PointerType.DEFAULT;
 		}
-		Scene scene = world.findCurrentScene(this.currentLocation);
-		Door door = scene.getDoor(x, y);
-		if (door != null) {
-			this.pointerType = door.getPointerType();
-			return;
-		} 
-		this.pointerType = PointerType.DEFAULT;
 	}
 	
 	public boolean isClicked() {
@@ -77,20 +79,49 @@ public class PlayerPointer {
 		this.clickedY = y;
 	}
 	
+	public boolean hasSelectedItem() {
+		return this.selectedItem;
+	}
+	
+	public void selectsItem(ItemType type) {
+		this.selectedItem = true;
+		this.selectedItemType = type;
+	}
+	
+	public ItemType getSelectedItemType() {
+		return this.selectedItemType;
+	}
+	
 	public void action() {
 		
 		if (checkForItem()) {
 			return;
 		}
 		checkForDoor();
-		
+		this.selectedItem = false;
+		this.pointerType = PointerType.DEFAULT;
 	}
 	
 	public boolean checkForItem() {
 		Item item = inventory.getItem(clickedX, clickedY);
 		if(item != null) {
-			if (item.interact(this)) {
-				//mudar ponteiro
+			item.interact(this);
+			switch (item.getType()) {
+			case FLASHLIGHT:
+				this.pointerType = PointerType.FLASHLIGHT;
+				break;
+			case HAMMER:
+				this.pointerType = PointerType.HAMMER;
+				break;
+			case PEN:
+				this.pointerType = PointerType.PEN;
+				break;
+			case KEY1:
+				this.pointerType = PointerType.KEY1;
+				break;
+			case KEY2:
+				this.pointerType = PointerType.KEY2;
+				break;
 			}
 			return true;
 		}
@@ -98,6 +129,7 @@ public class PlayerPointer {
 	}
 	
 	public void checkForDoor() {
+		
 		Scene currentScene = world.findCurrentScene(this.currentLocation);
 		Door door = currentScene.getDoor(clickedX, clickedY);
 		if(door != null) {

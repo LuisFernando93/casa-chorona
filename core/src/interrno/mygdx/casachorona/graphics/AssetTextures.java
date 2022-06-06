@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 
-import interno.mygdx.casachorona.model.ItemType;
 import interno.mygdx.casachorona.model.PointerType;
 
 public class AssetTextures {
@@ -44,6 +43,16 @@ public class AssetTextures {
 			return pointerLeftImg;
 		case RIGHT:
 			return pointerRightImg;
+		case FLASHLIGHT:
+			return flashlightImg;
+		case HAMMER:
+			return hammerImg;
+		case PEN:
+			return penImg;
+		case KEY1:
+			return key1Img;
+		case KEY2:
+			return key2Img;
 		default:
 			System.out.println("Sprite de ponteiro nao encontrada");
 			return null;

@@ -1,9 +1,12 @@
 package interno.mygdx.casachorona.world;
 
 import audio.SoundPlayer;
+import interno.mygdx.casachorona.dialogue.DialogueDatabase;
 import interno.mygdx.casachorona.game.Settings;
+import interno.mygdx.casachorona.model.ItemType;
 import interno.mygdx.casachorona.model.PlayerPointer;
 import interno.mygdx.casachorona.model.PointerType;
+import interno.mygdx.casachorona.screen.GameScreen;
 
 public class Door implements Interactable{
 
@@ -12,9 +15,10 @@ public class Door implements Interactable{
 	private Location goesTo;
 	private PointerType pointerType;
 	private boolean locked, stair;
+	private ItemType key;
 	
 	
-	public Door(int x, int y, int width, int height, Location goesTo, boolean locked, boolean stair, PointerType type) {
+	public Door(int x, int y, int width, int height, Location goesTo, boolean locked, ItemType key, boolean stair, PointerType type) {
 		this.x = x  * Settings.SCREEN_SCALE;
 		this.y = y  * Settings.SCREEN_SCALE;
 		this.width = width * Settings.SCREEN_SCALE;
@@ -22,7 +26,11 @@ public class Door implements Interactable{
 		this.goesTo = goesTo;
 		this.pointerType = type;
 		this.locked = locked;
+		this.key = key;
 		this.stair = stair;
+		if (this.locked && key == null) {
+			this.locked = false;
+		}
 	}
 
 	public int getX() {
@@ -59,13 +67,32 @@ public class Door implements Interactable{
 
 	@Override
 	public boolean interact(PlayerPointer player) {
-		player.setCurrentLocation(this.goesTo);
-		if (stair) {
-			SoundPlayer.playSFX("stair");
+		if (!player.hasSelectedItem()) {
+			if (!this.isLocked()) {
+				player.setCurrentLocation(this.goesTo);
+				if (stair) {
+					SoundPlayer.playSFX("stair");
+				} else {
+					SoundPlayer.playSFX("door");
+				}
+				return true;
+			}
+			GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(0)); //porta trancada
+			return false;
 		} else {
-			SoundPlayer.playSFX("door");
+			if (this.isLocked()) {
+				if (player.getSelectedItemType() == this.key) {
+					this.locked = false;
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(1)); //destranca porta
+				} else {
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+				}
+			} else {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			}
 		}
-		return true;
+		return false;
+		
 	}
 	
 }
