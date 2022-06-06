@@ -145,6 +145,7 @@ public class PlayerPointer {
 		Door door = currentScene.getDoor(clickedX, clickedY);
 		if(door != null) {
 			if (door.interact(this)) {
+				world.manageEvents(this.currentLocation);
 				this.pointerType = PointerType.DEFAULT;
 			}
 		}

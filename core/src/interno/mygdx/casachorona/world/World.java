@@ -7,11 +7,27 @@ public class World {
 	
 	private Scene[] scenes;
 	private int nScenes = 9;
+	private boolean metFanta = false;
+	private boolean arrivedScene3 = false;
+	private boolean arrivedScene4 = false;
+	private boolean arrivedScene5 = false;
+	private boolean arrivedScene6 = false;
+	private boolean arrivedScene7 = false;
+	private boolean arrivedScene8 = false;
+	private boolean arrivedScene9 = false;
 
 
 	public World() {
 		this.scenes = new Scene[nScenes];
 		createWorld();
+	}
+	
+	public boolean hasMeetFanta() {
+		return this.metFanta;
+	}
+	
+	public boolean hasArrivedScene9() {
+		return this.arrivedScene9;
 	}
 	
 	public void createWorld() {
@@ -63,6 +79,37 @@ public class World {
 		}
 		System.out.println("Cena atual nao encontrada");
 		return null;
+	}
+	
+	public void manageEvents(Location currentLocation) {
+		if (!this.arrivedScene3 && currentLocation == Location.SCENE3) {
+			System.out.println("primeira vez na cena 3");
+			this.arrivedScene3 = true;
+		} else if(!this.arrivedScene4 && currentLocation == Location.SCENE4) {
+			this.arrivedScene4 = true;
+			this.metFanta = true;
+		} else if(!this.arrivedScene5 && currentLocation == Location.SCENE5) {
+			this.arrivedScene5 = true;
+		} else if(!this.arrivedScene6 && currentLocation == Location.SCENE6) {
+			this.arrivedScene6 = true;
+		} else if(!this.arrivedScene7 && currentLocation == Location.SCENE7) {
+			this.arrivedScene7 = true;
+		} else if(!this.arrivedScene8 && currentLocation == Location.SCENE8) {
+			this.arrivedScene8 = true;
+		} else if(!this.arrivedScene9 && currentLocation == Location.SCENE9) {
+			this.arrivedScene9 = true;
+		}
+	}
+	
+	public void resetEvents() {
+		this.arrivedScene3 = false;
+		this.arrivedScene4 = false;
+		this.arrivedScene5 = false;
+		this.arrivedScene6 = false;
+		this.arrivedScene7 = false;
+		this.arrivedScene8 = false;
+		this.arrivedScene9 = false;
+		this.metFanta = false;
 	}
 	
 }
