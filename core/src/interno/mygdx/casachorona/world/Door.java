@@ -76,14 +76,20 @@ public class Door implements Interactable{
 					SoundPlayer.playSFX("door");
 				}
 				return true;
-			}
+			} else if (this.key == ItemType.FLASHLIGHT) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(5)); //porta da garagem trancada
+				return false;
+			} else {
 			GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(0)); //porta trancada
 			return false;
+			}
 		} else {
 			if (this.isLocked()) {
 				if (player.getSelectedItemType() == this.key) {
 					this.locked = false;
-					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(1)); //destranca porta
+					if (this.key == ItemType.FLASHLIGHT) {
+						GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(6));
+					} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(1)); //destranca porta
 				} else {
 					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
 				}
