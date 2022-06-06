@@ -54,7 +54,20 @@ public class SceneProp implements Interactable {
 				}
 			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
 			break;
-
+		case 1: 
+			if (!player.hasSelectedItem()) {
+				Inventory inventory = player.getInventory();
+				if (World.hasArrivedScene9()) {
+					if (!inventory.hasItem(1)) {
+						inventory.foundItem(ItemType.HAMMER);
+						 //pega martelo
+					} else {
+						 //ja pegou o martelo
+					}
+				} else {
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(7)); //nao pega o martelo
+				}
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
 		}
 		return true;
 	}

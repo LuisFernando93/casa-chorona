@@ -2,6 +2,8 @@ package interno.mygdx.casachorona.control;
 
 import com.badlogic.gdx.Input.Buttons;
 import com.badlogic.gdx.InputAdapter;
+
+import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.PlayerPointer;
 import interno.mygdx.casachorona.ui.DialogueBox;
 public class ControlPlayer extends InputAdapter {
@@ -26,7 +28,7 @@ public class ControlPlayer extends InputAdapter {
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		if (button == Buttons.LEFT && !dialogueBox.isVisible()) {
 			player.hasClicked(screenX, screenY);
-			System.out.println("Clicou! posicao x: " + screenX + " posicao y: " + screenY);
+			System.out.println("Clicou! posicao x: " + screenX/Settings.SCREEN_SCALE + " posicao y: " + screenY/Settings.SCREEN_SCALE);
 			return true;
 		}
 		return false;

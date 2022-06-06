@@ -1,7 +1,9 @@
 package interno.mygdx.casachorona.world;
 
+import interno.mygdx.casachorona.dialogue.DialogueDatabase;
 import interno.mygdx.casachorona.model.ItemType;
 import interno.mygdx.casachorona.model.PointerType;
+import interno.mygdx.casachorona.screen.GameScreen;
 
 public class World {
 	
@@ -14,7 +16,7 @@ public class World {
 	private boolean arrivedScene6 = false;
 	private boolean arrivedScene7 = false;
 	private boolean arrivedScene8 = false;
-	private boolean arrivedScene9 = false;
+	private static boolean arrivedScene9 = true;
 
 
 	public World() {
@@ -26,17 +28,18 @@ public class World {
 		return this.metFanta;
 	}
 	
-	public boolean hasArrivedScene9() {
-		return this.arrivedScene9;
+	public static boolean hasArrivedScene9() {
+		return World.arrivedScene9;
 	}
 	
 	public void createWorld() {
 		
-		scenes[0] = new Scene(Location.SCENE1, 1, 1);
+		scenes[0] = new Scene(Location.SCENE1, 1, 2);
 		
 		scenes[0].addDoor(new Door(420, 134, 27, 114, Location.SCENE2, true, ItemType.FLASHLIGHT, false, PointerType.RIGHT)); //porta direita
 		
 		scenes[0].addProp(new SceneProp(313, 282, 37, 15, 0)); //lanterna
+		scenes[0].addProp(new SceneProp(439, 275, 22, 28, 1));
 		
 		
 		scenes[1] = new Scene(Location.SCENE2, 2, 0);
@@ -83,7 +86,7 @@ public class World {
 	
 	public void manageEvents(Location currentLocation) {
 		if (!this.arrivedScene3 && currentLocation == Location.SCENE3) {
-			System.out.println("primeira vez na cena 3");
+			GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(8));
 			this.arrivedScene3 = true;
 		} else if(!this.arrivedScene4 && currentLocation == Location.SCENE4) {
 			this.arrivedScene4 = true;
@@ -96,8 +99,8 @@ public class World {
 			this.arrivedScene7 = true;
 		} else if(!this.arrivedScene8 && currentLocation == Location.SCENE8) {
 			this.arrivedScene8 = true;
-		} else if(!this.arrivedScene9 && currentLocation == Location.SCENE9) {
-			this.arrivedScene9 = true;
+		} else if(!World.arrivedScene9 && currentLocation == Location.SCENE9) {
+			World.arrivedScene9 = true;
 		}
 	}
 	
@@ -108,7 +111,7 @@ public class World {
 		this.arrivedScene6 = false;
 		this.arrivedScene7 = false;
 		this.arrivedScene8 = false;
-		this.arrivedScene9 = false;
+		World.arrivedScene9 = false;
 		this.metFanta = false;
 	}
 	
