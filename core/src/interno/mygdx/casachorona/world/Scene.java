@@ -3,21 +3,17 @@ package interno.mygdx.casachorona.world;
 public class Scene {
 
 	private Location location;
-	private int nDoors;
 	private Door[] doors;
+	private SceneProp[] props;
 	
-	public Scene(Location location, int nDoors) {
+	public Scene(Location location, int nDoors, int nProps) {
 		this.location = location;
-		this.nDoors = nDoors;
 		this.doors = new Door[nDoors];
+		this.props = new SceneProp[nProps];
 	}
 	
 	public Location getLocation() {
 		return this.location;
-	}
-	
-	public int getNDoors() {
-		return this.nDoors;
 	}
 	
 	public Door[] getDoors() {
@@ -31,7 +27,7 @@ public class Scene {
 				return;
 			}
 		}
-		System.out.println("todas as portas foram adicionadas na cena");
+		System.out.println("porta nao inserida na cena");
 	}
 	
 	public Door getDoor(int x, int y) { //procura se existe uma porta nesta coordenada, e retorna a porta se houver
@@ -43,5 +39,26 @@ public class Scene {
 			}
 		}
 		return null; //porta nao encontrada
+	}
+	
+	public void addProp(SceneProp prop) {
+		for (int i = 0; i < props.length; i++) {
+			if (this.props[i] == null) {
+				this.props[i] = prop;
+				return;
+			}
+		}
+		System.out.println("prop nao inserido na cena");
+	}
+	
+	public SceneProp getProp(int x, int y) { //procura se existe um prop nesta coordenada, e retorna o prop se houver
+		for (int i = 0; i < this.props.length; i++) {;
+			if (props[i] != null) {
+				if(x >= (this.props[i].getX()) & x <= (this.props[i].getX() + this.props[i].getWidth()) & y >= this.props[i].getY() & y <= (this.props[i].getY() + this.props[i].getHeight())) {
+					return this.props[i];
+				}
+			}
+		}
+		return null; //prop nao encontrado
 	}
 }

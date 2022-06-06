@@ -4,6 +4,7 @@ import interno.mygdx.casachorona.ui.Inventory;
 import interno.mygdx.casachorona.world.Door;
 import interno.mygdx.casachorona.world.Location;
 import interno.mygdx.casachorona.world.Scene;
+import interno.mygdx.casachorona.world.SceneProp;
 import interno.mygdx.casachorona.world.World;
 
 public class PlayerPointer {
@@ -61,7 +62,12 @@ public class PlayerPointer {
 			if (door != null) {
 				this.pointerType = door.getPointerType();
 				return;
-			} 
+			}
+			SceneProp prop = scene.getProp(x, y);
+			if (prop != null) {
+				this.pointerType = PointerType.HIGHLIGHT;
+				return;
+			}
 			this.pointerType = PointerType.DEFAULT;
 		}
 	}
@@ -92,12 +98,17 @@ public class PlayerPointer {
 		return this.selectedItemType;
 	}
 	
+	public Inventory getInventory() {
+		return this.inventory;
+	}
+	
 	public void action() {
 		
 		if (checkForItem()) {
 			return;
 		}
 		checkForDoor();
+		checkForProp();
 		this.selectedItem = false;
 		this.pointerType = PointerType.DEFAULT;
 	}
@@ -136,6 +147,14 @@ public class PlayerPointer {
 			if (door.interact(this)) {
 				this.pointerType = PointerType.DEFAULT;
 			}
+		}
+	}
+	
+	public void checkForProp() {
+		Scene currentScene = world.findCurrentScene(this.currentLocation);
+		SceneProp prop = currentScene.getProp(clickedX, clickedY);
+		if (prop != null) {
+			prop.interact(this);
 		}
 	}
 	

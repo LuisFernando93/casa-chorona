@@ -25,7 +25,7 @@ public class Inventory{
 	public void foundItem(ItemType type) {
 		for (int i = 0; i < items.length; i++) {
 			if (items[i].getType() == type) {
-				if (items[i].isPickedUp()) {
+				if (!items[i].isPickedUp()) {
 					items[i].pickUp();
 				}
 			}
