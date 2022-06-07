@@ -15,6 +15,10 @@ public class SoundPlayer {
 	private static Sound sfxStair = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/stair sfx.mp3"));
 	private static Sound sfxItem = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/item sfx.mp3"));
 	private static Sound sfxDoor = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/door sfx.mp3"));
+	private static Sound sfxUnlock = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/unlocked sfx.mp3"));
+	private static Sound sfxLocked = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/locked sfx.mp3"));
+	private static Sound sfxVoice1 = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/voice1 sfx.mp3"));
+	private static Sound sfxVoice2 = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/voice2 sfx.mp3"));
 	
 	public static void playSoundtrack(String name) {
 		
@@ -63,6 +67,18 @@ public class SoundPlayer {
 			break;
 		case "item":
 			sfxItem.play(0.1f);
+			break;
+		case "locked":
+			sfxLocked.play(1f);
+			break;
+		case "unlock":
+			sfxUnlock.play(0.5f);
+			break;
+		case "voice1":
+			sfxVoice1.play(0.1f);
+			break;
+		case "voice2":
+			sfxVoice2.play(0.1f);
 			break;
 		default:
 			System.out.println("som nao encontrado");

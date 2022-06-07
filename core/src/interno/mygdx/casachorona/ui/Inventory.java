@@ -1,7 +1,11 @@
 package interno.mygdx.casachorona.ui;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.Item;
 import interno.mygdx.casachorona.model.ItemType;
+import interrno.mygdx.casachorona.graphics.AssetTextures;
 
 public class Inventory{
 	
@@ -45,5 +49,14 @@ public class Inventory{
 			}
 		}
 		return null; //item nao encontrada
+	}
+	
+	public void render(float delta, SpriteBatch batch, AssetTextures assetTextures) {
+		for (int i = 0; i < 5; i++) {
+			batch.draw(assetTextures.getInventoryBox(), (45 + i*(assetTextures.getInventoryBox().getWidth()+26))*Settings.SCREEN_SCALE, (Settings.SCREEN_HEIGHT-assetTextures.getInventoryBox().getHeight()/2 - 5)*Settings.SCREEN_SCALE, assetTextures.getInventoryBox().getWidth(), assetTextures.getInventoryBox().getHeight());
+			if (this.hasItem(i)) {
+				batch.draw(assetTextures.getItem(i), (45 + i*(assetTextures.getInventoryBox().getWidth()+26))*Settings.SCREEN_SCALE, (Settings.SCREEN_HEIGHT-assetTextures.getInventoryBox().getHeight()/2 - 5)*Settings.SCREEN_SCALE, assetTextures.getInventoryBox().getWidth(), assetTextures.getInventoryBox().getHeight());
+			}
+		}
 	}
 }

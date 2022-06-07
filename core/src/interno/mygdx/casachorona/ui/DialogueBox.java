@@ -5,6 +5,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 
+import audio.SoundPlayer;
+
 public class DialogueBox extends Table {
 	
 	private String targetText = "";
@@ -63,6 +65,7 @@ public class DialogueBox extends Table {
 			int charactersToDisplay = (int) ((this.animTimer/this.animationTotalTime) * this.targetText.length());
 			for (int i = 0; i < charactersToDisplay; i++)
 				currentlyDisplayingText += targetText.charAt(i);
+				SoundPlayer.playSFX("voice1");
 			if (!currentlyDisplayingText.equals(this.textLabel.getText().toString()))
 				setText(currentlyDisplayingText);
 		}

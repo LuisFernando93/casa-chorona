@@ -118,7 +118,7 @@ public class DialogueDatabase {
 		DialogueNode node39 = new DialogueNode("Fantasma: Então, eu não sei o que aconteceu comigo,\nmas eu acho que morri.", 38);
 		DialogueNode node40 = new DialogueNode("Ava. Se não tivesse falado eu não teria percebido.", 39);
 		DialogueNode node41 = new DialogueNode("Morreu do que?", 40);
-		DialogueNode node42 = new DialogueNode("Fantasma: Não sei. Eu eventualmente só acordei\naqui do nada e já estava assim", 41);
+		DialogueNode node42 = new DialogueNode("Fantasma: Não sei. Eu eventualmente só acordei\naqui do nada e já estava assim.", 41);
 		DialogueNode node43 = new DialogueNode("...", 42);
 		DialogueNode node44 = new DialogueNode("Foda.", 43);
 		DialogueNode node45 = new DialogueNode("Bem, seguindo a lógica dos filmes, você deve ter algum\narrependimento ou algo assim...", 44);

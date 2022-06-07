@@ -1,11 +1,16 @@
 package interno.mygdx.casachorona.model;
 
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+
+import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.ui.Inventory;
 import interno.mygdx.casachorona.world.Door;
 import interno.mygdx.casachorona.world.Location;
 import interno.mygdx.casachorona.world.Scene;
 import interno.mygdx.casachorona.world.SceneProp;
 import interno.mygdx.casachorona.world.World;
+import interrno.mygdx.casachorona.graphics.AssetTextures;
 
 public class PlayerPointer {
 	
@@ -158,7 +163,10 @@ public class PlayerPointer {
 		}
 	}
 	
-	public void render(float delta) {
-		
+	public void render(float delta, SpriteBatch batch, AssetTextures assetTextures) {
+		Sprite playerSprite = assetTextures.getPlayerPointer(this.getPointerType());
+		if (this.hasSelectedItem()) {
+			batch.draw(assetTextures.getPlayerPointer(this.getPointerType()), this.getX() - 16, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - this.getY() - playerSprite.getHeight() + 48, 32, 32);
+		} else batch.draw(assetTextures.getPlayerPointer(this.getPointerType()), this.getX(), Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - this.getY() - playerSprite.getHeight(), playerSprite.getWidth(), playerSprite.getHeight());
 	}
 }

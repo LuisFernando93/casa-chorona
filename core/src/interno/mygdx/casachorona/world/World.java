@@ -37,11 +37,6 @@ public class World {
 		return World.arrivedScene9;
 	}
 	
-	public static void incrementPropsInteractedScene9() {
-		World.propsInteractedScene9++;
-		System.out.println(propsInteractedScene9);
-	}
-	
 	public void createWorld() {
 		
 		scenes[0] = new Scene(Location.SCENE1, 1, 2);
@@ -128,6 +123,10 @@ public class World {
 			GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(21));
 			World.rememberFanta = true;
 		}
+	}
+	
+	public static void incrementPropsInteractedScene9() {
+		World.propsInteractedScene9++;
 	}
 	
 	public static void resetEvents() {

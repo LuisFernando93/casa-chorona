@@ -21,6 +21,7 @@ import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.PlayerPointer;
 import interno.mygdx.casachorona.ui.DialogueBox;
 import interno.mygdx.casachorona.ui.Inventory;
+import interno.mygdx.casachorona.world.Location;
 import interno.mygdx.casachorona.world.Scene;
 import interno.mygdx.casachorona.world.World;
 import interrno.mygdx.casachorona.graphics.AssetTextures;
@@ -43,14 +44,14 @@ public class GameScreen extends AbstractScreen {
 	private BackgroundTextures backgroundTextures;
 	private AssetTextures assetTextures;
 	private Texture backgroundRender;
-	private Sprite playerSprite;
-	private Sprite inventorySprite;
 	
 	private int uiScale = 1;
 	
 	private Stage uiStage;
 	private Table dialogRoot;
 	private DialogueBox dialogueBox;
+	
+	private static String gameState = "GAME";
 
 	public GameScreen(CasaChorona game) {
 		super(game);
@@ -65,7 +66,6 @@ public class GameScreen extends AbstractScreen {
 		batch = new SpriteBatch();
 		backgroundTextures = new BackgroundTextures();
 		assetTextures = new AssetTextures();
-		inventorySprite = assetTextures.getInventoryBox();
 		
 		world = new World();
 		inventory = new Inventory();
@@ -78,12 +78,18 @@ public class GameScreen extends AbstractScreen {
 		multiplexer = new InputMultiplexer();
 		multiplexer.addProcessor(0, dialogueController);
 		multiplexer.addProcessor(1, playerController);
-		
-		//dialogueController.startDialogue(DialogueDatabase.getDialogue(0)); //teste de dialogo
 	}
 	
 	public static ControlDialogue getDialogueController() {
 		return dialogueController;
+	}
+	
+	public static String getGameState() {
+		return GameScreen.gameState;
+	}
+	
+	public static void setGameState(String gameState) {
+		GameScreen.gameState = gameState;
 	}
 	
 	private void initUI() {
@@ -104,6 +110,15 @@ public class GameScreen extends AbstractScreen {
 
 		dialogRoot.add(dialogTable).expand().align(Align.bottom);
 	}
+	
+	private void newGame() {
+		world.createWorld();
+		World.resetEvents();
+		inventory = new Inventory();
+		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2, world, inventory);
+		player.setCurrentLocation(Location.SCENE1);
+		GameScreen.setGameState("GAME");
+	}
 
 	@Override
 	public void show() {
@@ -114,39 +129,55 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	public void render(float delta) {
 		
-		//gameViewport.apply();
-		currentScene = world.findCurrentScene(player.getCurrentLocation());
-		uiStage.act(delta);
-		
-		batch.begin();
-		
-		//renderizar cenario
-		backgroundRender = backgroundTextures.getSceneArt(currentScene.getLocation());
-		batch.draw(backgroundRender, 0, 0, Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE, Settings.SCREEN_HEIGHT *Settings.SCREEN_SCALE);
-		
-		for (int i = 0; i < 5; i++) {
-			batch.draw(inventorySprite, (45 + i*(inventorySprite.getWidth()+26))*Settings.SCREEN_SCALE, (Settings.SCREEN_HEIGHT-inventorySprite.getHeight()/2 - 5)*Settings.SCREEN_SCALE, inventorySprite.getWidth(), inventorySprite.getHeight());
-			if (inventory.hasItem(i)) {
-				batch.draw(assetTextures.getItem(i), (45 + i*(inventorySprite.getWidth()+26))*Settings.SCREEN_SCALE, (Settings.SCREEN_HEIGHT-inventorySprite.getHeight()/2 - 5)*Settings.SCREEN_SCALE, inventorySprite.getWidth(), inventorySprite.getHeight());
+		switch (gameState) {
+		case "GAME":
+			currentScene = world.findCurrentScene(player.getCurrentLocation());
+			uiStage.act(delta);
+			
+			batch.begin();
+			
+			//renderizar cenario
+			backgroundRender = backgroundTextures.getSceneArt(currentScene.getLocation());
+			batch.draw(backgroundRender, 0, 0, Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE, Settings.SCREEN_HEIGHT *Settings.SCREEN_SCALE);
+			
+			inventory.render(delta, batch, assetTextures);
+			player.render(delta, batch, assetTextures);
+			
+			batch.end();
+			
+			uiStage.draw();
+			
+			if (player.isClicked()) {
+				player.action();
 			}
+			
+			World.manageEvents(player, dialogueBox);
+			break;
+			
+		case "MENU": 
+			
+			break;
+		
+		case "CREDITS": 
+			
+			break;
+			
+		case "CUTSCENE-BEGIN": 
+			
+			break;
+			
+		case "CUTSCENE-FANTA": 
+	
+			break;
+			
+		case "CUTSCENE-DOOR": 
+	
+			break;
+			
+		case "CUTSCENE-END":
+			
+			break;
 		}
-		
-		
-		playerSprite = assetTextures.getPlayerPointer(player.getPointerType());
-		if (player.hasSelectedItem()) {
-			batch.draw(assetTextures.getPlayerPointer(player.getPointerType()), player.getX() - 16, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight() + 48, 32, 32);
-		} else batch.draw(assetTextures.getPlayerPointer(player.getPointerType()), player.getX(), Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight(), playerSprite.getWidth(), playerSprite.getHeight());
-		
-		
-		batch.end();
-		
-		uiStage.draw();
-		
-		if (player.isClicked()) {
-			player.action();
-		}
-		
-		World.manageEvents(player, dialogueBox);
 	}
 
 	@Override
