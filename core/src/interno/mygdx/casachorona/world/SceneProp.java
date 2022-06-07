@@ -61,9 +61,9 @@ public class SceneProp implements Interactable {
 				if (World.hasArrivedScene9()) {
 					if (!inventory.hasItem(4)) {
 						inventory.foundItem(ItemType.HAMMER);
-						 //pega martelo
+						GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(26)); //pega martelo
 					} else {
-						 //ja pegou o martelo
+						GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(27)); //ja pegou o martelo
 					}
 				} else {
 					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(7)); //nao pega o martelo
@@ -117,8 +117,29 @@ public class SceneProp implements Interactable {
 				}
 			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
 			break;
+		case 7:
+			if (!player.hasSelectedItem()) {
+				Inventory inventory = player.getInventory();
+				if(inventory.hasItem(3)) {
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(24)); //ja pegou a chave
+				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(22)); //cofre esta trancado
+			} else {
+				Inventory inventory = player.getInventory();
+				if(!inventory.hasItem(3) && player.getSelectedItemType() == ItemType.PASSWORD)  {
+					inventory.foundItem(ItemType.KEY2);
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(23)); //pega a chave do sotao
+				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			}
+			break;
+		case 8:
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(25)); //bau trancado
+			} else if (player.getSelectedItemType() == ItemType.HAMMER) {
+				//fim de jogo
+				System.out.println("fim do jogo");
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
 		}
-		
 		return true;
 	}
 }

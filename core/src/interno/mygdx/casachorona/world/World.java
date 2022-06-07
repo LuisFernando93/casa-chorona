@@ -12,14 +12,14 @@ public class World {
 	
 	private Scene[] scenes;
 	private int nScenes = 9;
-	private static boolean metFanta = true;
-	private static boolean arrivedScene3 = true;
-	private static boolean arrivedScene4 = true;
-	private static boolean arrivedScene5 = true;
-	private static boolean arrivedScene6 = true;
-	private static boolean arrivedScene7 = true;
-	private static boolean arrivedScene8 = true;
-	private static boolean arrivedScene9 = true;
+	private static boolean metFanta = false;
+	private static boolean arrivedScene3 = false;
+	private static boolean arrivedScene4 = false;
+	private static boolean arrivedScene5 = false;
+	private static boolean arrivedScene6 = false;
+	private static boolean arrivedScene7 = false;
+	private static boolean arrivedScene8 = false;
+	private static boolean arrivedScene9 = false;
 	private static boolean rememberFanta = false;
 	private static int propsInteractedScene9 = 0;
 
@@ -69,15 +69,17 @@ public class World {
 		scenes[4].addDoor(new Door(385, 83, 30, 123, Location.SCENE4, false, null, true, PointerType.DOWN)); //escada a direita
 		scenes[4].addDoor(new Door(435, 65, 39, 202, Location.SCENE7, false, null, false, PointerType.RIGHT)); //ultima porta a direita
 		
-		scenes[5] = new Scene(Location.SCENE6, 1, 0);
+		scenes[5] = new Scene(Location.SCENE6, 1, 1);
 		scenes[5].addDoor(new Door(0, 131, 26, 163, Location.SCENE3, false, null, false, PointerType.LEFT)); //porta unica
+		scenes[5].addProp(new SceneProp(46, 196, 34, 34, 7)); //cofre
 		
 		scenes[6] = new Scene(Location.SCENE7, 1, 1);
 		scenes[6].addDoor(new Door(340, 117, 61, 120, Location.SCENE5, false, null, false, PointerType.UP)); //porta unica
 		scenes[6].addProp(new SceneProp(116, 193, 43, 60, 2)); //movel ao lado da cama
 		
-		scenes[7] = new Scene(Location.SCENE8, 1, 0);
+		scenes[7] = new Scene(Location.SCENE8, 1, 1);
 		scenes[7].addDoor(new Door(173, 290, 114, 30, Location.SCENE5, false, null, true, PointerType.DOWN)); //porta atras
+		scenes[7].addProp(new SceneProp(44, 208, 54, 58, 8)); //bau
 		
 		scenes[8] = new Scene(Location.SCENE9, 1, 4);
 		scenes[8].addDoor(new Door(26, 142, 30, 115, Location.SCENE5, false, null, false, PointerType.LEFT)); //porta unica

@@ -2,7 +2,7 @@ package interno.mygdx.casachorona.dialogue;
 
 public class DialogueDatabase {
 
-	private static Dialogue[] dialogues = new Dialogue[22];
+	private static Dialogue[] dialogues = new Dialogue[28];
 	
 	public static void CreateDialogueDatabase() {
 		
@@ -425,7 +425,7 @@ public class DialogueDatabase {
 		node9 = new DialogueNode("Fanta: ...", 8);
 		node10 = new DialogueNode("Fanta: Meu aniversário. 15/03/1985", 9);
 		node11 = new DialogueNode("Alek: ... Faz realmente muito tempo que tudo aconteceu então.", 10);
-		node12 = new DialogueNode("Alek: Bem, se eles eram pais tão bons assim,\nessa pode ser a senha de algo, vou anotar aqui.", 11);
+		node12 = new DialogueNode("Alek: Bem, se eles eram pais tão bons assim,\nessa pode ser a senha de algo. Vou anotar aqui.", 11);
 		node13 = new DialogueNode("Fanta: Sim, provavelmente.", 12);
 		node13.setEnd();
 		dialogue.addDialogueNode(node1);
@@ -442,6 +442,53 @@ public class DialogueDatabase {
 		dialogue.addDialogueNode(node12);
 		dialogue.addDialogueNode(node13);
 		DialogueDatabase.dialogues[21] = dialogue;
+		
+		//cena6 cofre sem senha
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Um cofre... Esse é um modelo bem antigo.\nNa casa dos meus avós tem um desse.", 0);
+		node2 = new DialogueNode("Alek: A senha deve ter 4 dígitos.", 1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[22] = dialogue;
+		
+		//cena6 cofre abre
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Abriu! Vamos ver o que tem ai...", 0);
+		node2 = new DialogueNode("Alek: Uma chave? Deve ser do sotão", 1);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[23] = dialogue;
+		
+		//cena6 cofre vazio
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Não tem mais nada de valor aí.", 0);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[24] = dialogue;
+		
+		//cena8 bau sem marreta
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Um baú... trancado...", 0);
+		node2 = new DialogueNode("Alek: Eu não vou achar outra chave.\nTá na hora da marreta!", 1);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[25] = dialogue;
+		
+		//cena 1 pega marreta
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Isso vai servir!", 0);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[26] = dialogue;
+		
+		//ja pegou marreta
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Tá pesado! Vamos logo com isso!", 0);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[27] = dialogue;
 	}
 	
 	public static Dialogue getDialogue(int id) {
