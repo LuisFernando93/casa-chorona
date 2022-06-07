@@ -7,7 +7,7 @@ public class Item implements Interactable{
 
 	private int x, y, width, height;
 	private ItemType type;
-	private boolean pickedUp = false;
+	private boolean pickedUp = true;
 	
 	public Item(int x, int y, int width, int height, ItemType type) {
 		this.x = x * Settings.SCREEN_SCALE;

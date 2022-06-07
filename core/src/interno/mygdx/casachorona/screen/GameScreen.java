@@ -56,7 +56,7 @@ public class GameScreen extends AbstractScreen {
 		super(game);
 		
 		Pixmap pixmap = new Pixmap(Gdx.files.internal("graphics/cursorHidden.png"));
-		int xHotspot = 15, yHotspot = 15;
+		int xHotspot = 0, yHotspot = 0;
 		Cursor cursor = Gdx.graphics.newCursor(pixmap, xHotspot, yHotspot);
 		pixmap.dispose(); // We don't need the pixmap anymore
 		Gdx.graphics.setCursor(cursor);
@@ -134,7 +134,7 @@ public class GameScreen extends AbstractScreen {
 		
 		playerSprite = assetTextures.getPlayerPointer(player.getPointerType());
 		if (player.hasSelectedItem()) {
-			batch.draw(assetTextures.getPlayerPointer(player.getPointerType()), player.getX(), Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight(), 32, 32);
+			batch.draw(assetTextures.getPlayerPointer(player.getPointerType()), player.getX() - 16, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight() + 48, 32, 32);
 		} else batch.draw(assetTextures.getPlayerPointer(player.getPointerType()), player.getX(), Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE - player.getY() - playerSprite.getHeight(), playerSprite.getWidth(), playerSprite.getHeight());
 		
 		

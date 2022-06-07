@@ -10,11 +10,11 @@ public class DialogueNode {
 	public DialogueNode(String text, int id) {
 		this.id = id;
 		this.text = text;
-		this.pointer = -1;
+		this.pointer = id+1;
 	}
 	
-	public void setPointer (int nodeId) {
-		this.pointer = nodeId;
+	public void setEnd() {
+		this.pointer = -1;
 	}
 	
 	public int getPointer() {

@@ -70,6 +70,6 @@ public class DialogueBox extends Table {
 	
 	@Override
 	public float getPrefWidth() {
-		return 300f;
+		return 360f;
 	}
 }
