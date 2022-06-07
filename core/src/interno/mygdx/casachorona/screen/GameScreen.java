@@ -145,6 +145,8 @@ public class GameScreen extends AbstractScreen {
 		if (player.isClicked()) {
 			player.action();
 		}
+		
+		World.manageEvents(player, dialogueBox);
 	}
 
 	@Override

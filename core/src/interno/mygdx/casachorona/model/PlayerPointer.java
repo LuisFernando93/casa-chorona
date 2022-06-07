@@ -124,8 +124,8 @@ public class PlayerPointer {
 			case HAMMER:
 				this.pointerType = PointerType.HAMMER;
 				break;
-			case PEN:
-				this.pointerType = PointerType.PEN;
+			case PASSWORD:
+				this.pointerType = PointerType.PASSWORD;
 				break;
 			case KEY1:
 				this.pointerType = PointerType.KEY1;
@@ -145,7 +145,6 @@ public class PlayerPointer {
 		Door door = currentScene.getDoor(clickedX, clickedY);
 		if(door != null) {
 			if (door.interact(this)) {
-				World.manageEvents(this.currentLocation);
 				this.pointerType = PointerType.DEFAULT;
 			}
 		}

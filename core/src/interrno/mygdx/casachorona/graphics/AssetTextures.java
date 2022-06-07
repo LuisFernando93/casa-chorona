@@ -10,7 +10,7 @@ public class AssetTextures {
 	
 	private Texture spritesheet = new Texture(Gdx.files.internal("graphics/spritesheet.png"));
 	private Sprite pointerDefaltImg, pointerHighlightImg, pointerUpImg, pointerDownImg, pointerLeftImg, pointerRightImg;
-	private Sprite flashlightImg, hammerImg, penImg, key1Img, key2Img;
+	private Sprite flashlightImg, hammerImg, passwordImg, key1Img, key2Img;
 	private Sprite inventoryBox;
 	
 	
@@ -24,7 +24,7 @@ public class AssetTextures {
 		inventoryBox = new Sprite(spritesheet, 192, 96, 64, 64);
 		flashlightImg = new Sprite(spritesheet, 64, 32, 64, 64);
 		hammerImg = new Sprite(spritesheet, 128, 32, 64, 64);
-		penImg = new Sprite(spritesheet, 192, 32, 64, 64);
+		passwordImg = new Sprite(spritesheet, 192, 32, 64, 64);
 		key1Img = new Sprite(spritesheet, 64, 96, 64, 64);
 		key2Img = new Sprite(spritesheet, 128, 96, 64, 64);
 	}
@@ -47,8 +47,8 @@ public class AssetTextures {
 			return flashlightImg;
 		case HAMMER:
 			return hammerImg;
-		case PEN:
-			return penImg;
+		case PASSWORD:
+			return passwordImg;
 		case KEY1:
 			return key1Img;
 		case KEY2:
@@ -68,13 +68,13 @@ public class AssetTextures {
 		case 0:
 			return flashlightImg;
 		case 1:
-			return hammerImg;
-		case 2:
-			return penImg;
-		case 3:
 			return key1Img;
-		case 4:
+		case 2:
+			return passwordImg;
+		case 3:
 			return key2Img;
+		case 4:
+			return hammerImg;
 		}
 		System.out.println("Erro ao recuperar o sprite do item");
 		return null;

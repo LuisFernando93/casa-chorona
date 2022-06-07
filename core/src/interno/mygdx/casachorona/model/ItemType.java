@@ -3,7 +3,7 @@ package interno.mygdx.casachorona.model;
 public enum ItemType {
 	FLASHLIGHT,
 	HAMMER,
-	PEN,
+	PASSWORD,
 	KEY1,
 	KEY2;
 }

@@ -9,8 +9,9 @@ import interno.mygdx.casachorona.ui.Inventory;
 
 public class SceneProp implements Interactable {
 	
-	int x, y, width, height;
-	int id;
+	private int x, y, width, height;
+	private int id;
+	private boolean interacted = false;
 
 	public SceneProp(int x, int y, int width, int height, int id) {
 		this.x = x * Settings.SCREEN_SCALE;
@@ -58,7 +59,7 @@ public class SceneProp implements Interactable {
 			if (!player.hasSelectedItem()) {
 				Inventory inventory = player.getInventory();
 				if (World.hasArrivedScene9()) {
-					if (!inventory.hasItem(1)) {
+					if (!inventory.hasItem(4)) {
 						inventory.foundItem(ItemType.HAMMER);
 						 //pega martelo
 					} else {
@@ -68,7 +69,56 @@ public class SceneProp implements Interactable {
 					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(7)); //nao pega o martelo
 				}
 			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 2:
+			if (!player.hasSelectedItem()) {
+				Inventory inventory = player.getInventory();
+				if (!inventory.hasItem(1)) {
+					inventory.foundItem(ItemType.KEY1);
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(15)); //pega chave1
+				} else {
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(16)); //segunda vez interagindo
+				}
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 3: //tenda cena9
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(18));
+				if(!this.interacted) {
+					this.interacted = true;
+					World.incrementPropsInteractedScene9();
+				}
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 4: //cama cena9
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(17));
+				if(!this.interacted) {
+					this.interacted = true;
+					World.incrementPropsInteractedScene9();
+				}
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 5: //bau cena9
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(20));
+				if(!this.interacted) {
+					this.interacted = true;
+					World.incrementPropsInteractedScene9();
+				}
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 6: //poster cena9
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(19));
+				if(!this.interacted) {
+					this.interacted = true;
+					World.incrementPropsInteractedScene9();
+				}
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
 		}
+		
 		return true;
 	}
 }

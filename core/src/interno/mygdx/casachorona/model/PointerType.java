@@ -9,7 +9,7 @@ public enum PointerType {
 	RIGHT,
 	FLASHLIGHT,
 	HAMMER,
-	PEN,
+	PASSWORD,
 	KEY1,
 	KEY2;
 }
