@@ -75,10 +75,10 @@ public class SoundPlayer {
 			sfxUnlock.play(0.5f);
 			break;
 		case "voice1":
-			sfxVoice1.play(0.1f);
+			sfxVoice1.play(0.08f);
 			break;
 		case "voice2":
-			sfxVoice2.play(0.1f);
+			sfxVoice2.play(0.2f);
 			break;
 		default:
 			System.out.println("som nao encontrado");

@@ -26,12 +26,12 @@ public class ControlDialogue extends InputAdapter {
 		dialogueBox.setVisible(true);
 		
 		DialogueNode node = traverser.getNode();
-		dialogueBox.animateText(node.getText());
+		dialogueBox.animateText(node.getText(), node.getVoiceType());
 	}
 	
 	private void progress() {
 		DialogueNode node = traverser.getNextNode();
-		dialogueBox.animateText(node.getText());
+		dialogueBox.animateText(node.getText(), node.getVoiceType());
 	}
 	
 	@Override

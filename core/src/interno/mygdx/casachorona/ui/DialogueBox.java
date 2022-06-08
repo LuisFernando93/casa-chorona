@@ -11,9 +11,11 @@ public class DialogueBox extends Table {
 	
 	private String targetText = "";
 	private float animTimer = 0f;
+	private float soundTimer = 0f;
 	private float animationTotalTime = 0f;
 	private float TIME_PER_CHARACTER = 0.05f;
 	private STATE state = STATE.IDLE;
+	private int voiceType;
 	
 	private Label textLabel;
 	
@@ -30,11 +32,13 @@ public class DialogueBox extends Table {
 		this.add(textLabel).expand().align(Align.left).pad(5f);
 	}
 	
-	public void animateText(String text) {
+	public void animateText(String text, int voiceType) {
 		this.targetText = text;
+		this.voiceType = voiceType;
 		this.animationTotalTime = text.length() * this.TIME_PER_CHARACTER;
 		this.state = STATE.ANIMATING;
 		this.animTimer = 0f;
+		this.soundTimer = 0f;
 	}
 	
 	public boolean isFinished() {
@@ -57,17 +61,25 @@ public class DialogueBox extends Table {
 		super.act(delta);
 		if (state == STATE.ANIMATING) {
 			this.animTimer += delta;
+			this.soundTimer += delta;
+			if (this.soundTimer >= this.animationTotalTime/this.targetText.length()) {
+				this.soundTimer = 0;
+				System.out.println(this.voiceType);
+				if (voiceType != 1) {
+					SoundPlayer.playSFX("voice2");
+				} else SoundPlayer.playSFX("voice1");
+			}
 			if (this.animTimer > this.animationTotalTime) {
 				state = STATE.IDLE;
 				this.animTimer = this.animationTotalTime;
+				this.soundTimer = 0;
 			}
 			String currentlyDisplayingText = "";
 			int charactersToDisplay = (int) ((this.animTimer/this.animationTotalTime) * this.targetText.length());
-			for (int i = 0; i < charactersToDisplay; i++)
+			for (int i = 0; i < charactersToDisplay; i++) 
 				currentlyDisplayingText += targetText.charAt(i);
-				SoundPlayer.playSFX("voice1");
-			if (!currentlyDisplayingText.equals(this.textLabel.getText().toString()))
-				setText(currentlyDisplayingText);
+			if (!currentlyDisplayingText.equals(this.textLabel.getText().toString())) 
+				setText(currentlyDisplayingText);	
 		}
 	}
 	
