@@ -5,7 +5,6 @@ import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.Cursor;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -26,6 +25,7 @@ import interno.mygdx.casachorona.world.Scene;
 import interno.mygdx.casachorona.world.World;
 import interrno.mygdx.casachorona.graphics.AssetTextures;
 import interrno.mygdx.casachorona.graphics.BackgroundTextures;
+import interrno.mygdx.casachorona.graphics.CutsceneTextures;
 
 public class GameScreen extends AbstractScreen {
 	
@@ -43,6 +43,7 @@ public class GameScreen extends AbstractScreen {
 	
 	private BackgroundTextures backgroundTextures;
 	private AssetTextures assetTextures;
+	private CutsceneTextures cutsceneTextures;
 	private Texture backgroundRender;
 	
 	private int uiScale = 1;
@@ -66,6 +67,7 @@ public class GameScreen extends AbstractScreen {
 		batch = new SpriteBatch();
 		backgroundTextures = new BackgroundTextures();
 		assetTextures = new AssetTextures();
+		cutsceneTextures = new CutsceneTextures();
 		
 		world = new World();
 		inventory = new Inventory();

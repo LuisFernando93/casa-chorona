@@ -64,7 +64,6 @@ public class DialogueBox extends Table {
 			this.soundTimer += delta;
 			if (this.soundTimer >= this.animationTotalTime/this.targetText.length()) {
 				this.soundTimer = 0;
-				System.out.println(this.voiceType);
 				if (voiceType != 1) {
 					SoundPlayer.playSFX("voice2");
 				} else SoundPlayer.playSFX("voice1");
