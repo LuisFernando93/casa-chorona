@@ -2,7 +2,7 @@ package interno.mygdx.casachorona.dialogue;
 
 public class DialogueDatabase {
 
-	private static Dialogue[] dialogues = new Dialogue[33];
+	private static Dialogue[] dialogues = new Dialogue[50];
 	
 	public static void CreateDialogueDatabase() {
 		
@@ -548,6 +548,202 @@ public class DialogueDatabase {
 		dialogue.addDialogueNode(node1);
 		dialogue.addDialogueNode(node2);
 		DialogueDatabase.dialogues[32] = dialogue;
+		
+		//ending1
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: CHEGA DE PUZZLE!", 0);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[33] = dialogue;
+		
+		//ending2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("...", 0);
+		node2 = new DialogueNode("Alek: Fanta... esse é... você...?", 1);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[34] = dialogue;
+		
+		//ending3
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Ah sim... Agora eu lembrei como foi.", 0, 2);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[35] = dialogue;
+		
+		//ending4
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Eu vivia com meu pai e minha mãe.\nNós éramos felizes.", 0,2);
+		node2 = new DialogueNode("Mamãe cuidava dos meus estudos e da casa e\no Papai trabalhava muito o dia todo.", 1,2);
+		node3 = new DialogueNode("Mas acho que as coisas eventualmente não\nestavam dando tão certo para o papai.", 2,2);
+		node3.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		DialogueDatabase.dialogues[36] = dialogue;
+		
+		//ending5
+		dialogue = new Dialogue(); 
+		node1 = new DialogueNode("Ele ficava nervoso frequentemente e\ncomeçou a beber muito.", 0,2);
+		node2 = new DialogueNode("As coisas em casa começaram a mudar,\npapai e mamãe discutiam o dia todo.", 1,2);
+		node3 = new DialogueNode("Eu não entendia o porquê, mas eles não paravam de brigar.", 2,2);
+		node3.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		DialogueDatabase.dialogues[37] = dialogue;
+		
+		//ending6
+		dialogue = new Dialogue(); 
+		node1 = new DialogueNode("Um dia ele chegou bêbado em casa tarde da noite.", 0,2);
+		node2 = new DialogueNode("Quando a mãe foi questioná-lo sobre\nisso, ele a agrediu.", 1,2);
+		node3 = new DialogueNode("Ele estava completamente diferente,\naquele não era meu pai.", 2,2);
+		node4 = new DialogueNode("Quando eu gritei para ele parar,\nele começou a vir em minha direção.", 3,2);
+		node4.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		DialogueDatabase.dialogues[38] = dialogue;
+		
+		//ending7 
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Mamãe tentou me defender, mas ele não parou.", 0, 2);
+		node2 = new DialogueNode("Lembro que ele agarrou meu braço com força,\nainda consigo sentir aquele cheiro horrível vindo dele", 1,2);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[39] = dialogue;
+		
+		//ending8
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Eu não lembro exatamente o que ele\nfalou para mim naquele dia.", 0, 2);
+		node2 = new DialogueNode(" Acho que é melhor assim.", 1,2);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[40] = dialogue;
+		
+		//ending9
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Mamãe acertou a cabeça dele com uma\ngarrafa e isso o fez cair", 0, 2);
+		node2 = new DialogueNode("Ela me pegou e tentou fugir, mas eu sabia que ele\nia vir atrás de nós, então eu precisava ser corajoso.", 1,2);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[41] = dialogue;
+		
+		//ending10
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Mamãe acertou a cabeça dele com uma\ngarrafa e isso o fez cair", 0, 2);
+		node2 = new DialogueNode("Ela me pegou e tentou fugir, mas eu sabia que ele\nia vir atrás de nós, então eu precisava ser corajoso.", 1,2);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[42] = dialogue;
+		
+		//ending11
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Eu tranquei a porta, peguei a chave e me\nescondi no lugar mais seguro possível.", 0, 2);
+		node2 = new DialogueNode("Um lugar que eu sabia que só meu pai me acharia.", 1,2);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[43] = dialogue;
+		
+		//ending12
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Eu ouvia ele me procurando e gritando\ncoisas horríveis, mas estava tudo bem... ", 0);
+		node2 = new DialogueNode("Aquele não era meu pai. O tempo ia passar\ne meu pai voltaria, ele tinha de voltar.", 1);
+		node3 = new DialogueNode("Eu aguardei pacientemente até o barulho parar.", 2);
+		node4 = new DialogueNode("Quando tudo ficou quieto, eu tentei\nsair, mas eu não consegui.", 3);
+		node5 = new DialogueNode("Mas estava tudo bem, papai iria chegar\nde manhã e me tiraria dali.", 4);
+		node6 = new DialogueNode("Estava tudo bem... era só... esperar...", 5);
+		node6.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		dialogue.addDialogueNode(node5);
+		dialogue.addDialogueNode(node6);
+		DialogueDatabase.dialogues[44] = dialogue;
+		
+		//ending13
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("...", 0);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[45] = dialogue;
+		
+		//ending14
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Ei, você parou de chorar", 0);
+		node2 = new DialogueNode("Fanta: Sim. Está tudo bem agora.", 1,2);
+		node3 = new DialogueNode("Fanta: Mas eu queria saber o que\naconteceu com minha mãe...", 2, 2);
+		node4 = new DialogueNode("Alek: Não se preocupe.\nEu prometo que vou descobrir.", 3);
+		node4.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		DialogueDatabase.dialogues[46] = dialogue;
+		
+		//ending15
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Fanta: Eu sei que vai.", 0, 2);
+		node2 = new DialogueNode("Fanta: Obrigado por tudo.", 1,2);
+		node3 = new DialogueNode("Fanta: Se não fosse por você, eu não\nsei mais quanto tempo eu ficaria aqui.", 2, 2);
+		node4 = new DialogueNode("Alek: Que isso po, tamo junto.", 3);
+		node4.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		DialogueDatabase.dialogues[46] = dialogue;
+		
+		//ending16
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: E-Ei, o que são essas luzinhas?", 0);
+		node2 = new DialogueNode("Fanta: Hehe, acho que minha hora chegou.", 1,2);
+		node3 = new DialogueNode("Alek: Espera! A gente nem teve a\nchance de jogar algo juntos!", 2);
+		node4 = new DialogueNode("Fanta: Não se preocupe com isso,\neu estou bem agora. De verdade", 3,2);
+		node5 = new DialogueNode("Fanta: Quando você chegou, tinha dito que entrou aqui para\nfazer com que algumas pessoas gostassem de você.", 4,2);
+		node6 = new DialogueNode("Fanta: Eu não sei se essas pessoas são\ntão legais assim, mas eu gosto de você.", 5,2);
+		node7 = new DialogueNode("Fanta: Você é incrível, sei que não precisa\nse esforçar tanto para fazer amizades.", 6,2);
+		node8 = new DialogueNode("Fanta: Só seja você mesmo e as pessoas vão gostar.", 7,2);
+		node9 = new DialogueNode("Alek: ...", 8);
+		node10 = new DialogueNode("Fanta: Vamos, não faça essa cara.", 9,2);
+		node11 = new DialogueNode("Fanta: Sabe, se eu tivesse um irmão mais velho,\neu gostaria que ele fosse como você...", 10, 2);
+		node11.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		dialogue.addDialogueNode(node5);
+		dialogue.addDialogueNode(node6);
+		dialogue.addDialogueNode(node7);
+		dialogue.addDialogueNode(node8);
+		dialogue.addDialogueNode(node9);
+		dialogue.addDialogueNode(node10);
+		dialogue.addDialogueNode(node11);
+		DialogueDatabase.dialogues[47] = dialogue;
+		
+		//ending17
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: ...", 0);
+		node2 = new DialogueNode("Alek: Até algum dia, maninho.", 1);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[48] = dialogue;
+		
+		//ending18
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Fim", 0);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[49] = dialogue;
 	}
 	
 	public static Dialogue getDialogue(int id) {
