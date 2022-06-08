@@ -1,6 +1,6 @@
 package interno.mygdx.casachorona.world;
 
-import audio.SoundPlayer;
+import interno.mygdx.casachorona.audio.AudioPlayer;
 import interno.mygdx.casachorona.dialogue.DialogueDatabase;
 import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.ItemType;
@@ -71,25 +71,25 @@ public class Door implements Interactable{
 			if (!this.isLocked()) {
 				player.setCurrentLocation(this.goesTo);
 				if (stair) {
-					SoundPlayer.playSFX("stair");
+					AudioPlayer.playSFX("stair");
 				} else {
-					SoundPlayer.playSFX("door");
+					AudioPlayer.playSFX("door");
 				}
 				return true;
 			} else if (this.key == ItemType.FLASHLIGHT) {
 				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(5)); //porta da garagem trancada
-				SoundPlayer.playSFX("locked");
+				AudioPlayer.playSFX("locked");
 				return false;
 			} else {
 			GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(0)); //porta trancada
-			SoundPlayer.playSFX("locked");
+			AudioPlayer.playSFX("locked");
 			return false;
 			}
 		} else {
 			if (this.isLocked()) {
 				if (player.getSelectedItemType() == this.key) {
 					this.locked = false;
-					SoundPlayer.playSFX("unlock");
+					AudioPlayer.playSFX("unlock");
 					if (this.key == ItemType.FLASHLIGHT) {
 						GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(6));
 					} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(1)); //destranca porta

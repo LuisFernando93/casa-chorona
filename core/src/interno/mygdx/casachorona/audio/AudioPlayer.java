@@ -1,9 +1,9 @@
-package audio;
+package interno.mygdx.casachorona.audio;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Sound;
 
-public class SoundPlayer {
+public class AudioPlayer {
 	
 	private static Sound game = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/game soundtrack.wav"));
 	private static Sound menu = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/menu soundtrack.wav"));
@@ -22,12 +22,12 @@ public class SoundPlayer {
 	
 	public static void playSoundtrack(String name) {
 		
-		SoundPlayer.game.stop();
-		SoundPlayer.menu.stop();
-		SoundPlayer.credits.stop();
-		SoundPlayer.cutscene1.stop();
-		SoundPlayer.cutsceneFanta.stop();
-		SoundPlayer.gameOver.stop();
+		AudioPlayer.game.stop();
+		AudioPlayer.menu.stop();
+		AudioPlayer.credits.stop();
+		AudioPlayer.cutscene1.stop();
+		AudioPlayer.cutsceneFanta.stop();
+		AudioPlayer.gameOver.stop();
 
 		switch (name) {
 		case "game":

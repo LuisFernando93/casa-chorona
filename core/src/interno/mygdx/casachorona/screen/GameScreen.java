@@ -11,9 +11,10 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 
-import audio.SoundPlayer;
+import interno.mygdx.casachorona.audio.AudioPlayer;
 import interno.mygdx.casachorona.control.ControlDialogue;
 import interno.mygdx.casachorona.control.ControlPlayer;
+import interno.mygdx.casachorona.cutscene.CutscenePlayer;
 import interno.mygdx.casachorona.dialogue.DialogueDatabase;
 import interno.mygdx.casachorona.game.CasaChorona;
 import interno.mygdx.casachorona.game.Settings;
@@ -39,7 +40,7 @@ public class GameScreen extends AbstractScreen {
 	private ControlPlayer playerController;
 	private static ControlDialogue dialogueController;
 	
-	//private ScreenViewport gameViewport;
+	private CutscenePlayer cutscenePlayer;
 	
 	private BackgroundTextures backgroundTextures;
 	private AssetTextures assetTextures;
@@ -52,7 +53,7 @@ public class GameScreen extends AbstractScreen {
 	private Table dialogRoot;
 	private DialogueBox dialogueBox;
 	
-	private static String gameState = "GAME";
+	private static String gameState = "cutscenePlayer";
 
 	public GameScreen(CasaChorona game) {
 		super(game);
@@ -72,6 +73,7 @@ public class GameScreen extends AbstractScreen {
 		world = new World();
 		inventory = new Inventory();
 		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2, world, inventory);
+		cutscenePlayer = new CutscenePlayer(dialogueBox, cutsceneTextures);
 		
 		DialogueDatabase.CreateDialogueDatabase();
 		
@@ -119,20 +121,21 @@ public class GameScreen extends AbstractScreen {
 		inventory = new Inventory();
 		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2, world, inventory);
 		player.setCurrentLocation(Location.SCENE1);
-		GameScreen.setGameState("GAME");
+		CutscenePlayer.setActiveCutscene(0);
+		GameScreen.setGameState("cutscenePlayer");
 	}
 
 	@Override
 	public void show() {
 		Gdx.input.setInputProcessor(multiplexer);
-		SoundPlayer.playSoundtrack("game");
+		AudioPlayer.playSoundtrack("game");
 	}
 
 	@Override
 	public void render(float delta) {
 		
 		switch (gameState) {
-		case "GAME":
+		case "game":
 			currentScene = world.findCurrentScene(player.getCurrentLocation());
 			uiStage.act(delta);
 			
@@ -156,27 +159,26 @@ public class GameScreen extends AbstractScreen {
 			World.manageEvents(player, dialogueBox);
 			break;
 			
-		case "MENU": 
+		case "menu": 
 			
 			break;
 		
-		case "CREDITS": 
+		case "credits": 
 			
 			break;
 			
-		case "CUTSCENE-BEGIN": 
+		case "cutscenePlayer": 
 			
-			break;
+			uiStage.act(delta);
 			
-		case "CUTSCENE-FANTA": 
-	
-			break;
+			batch.begin();
 			
-		case "CUTSCENE-DOOR": 
-	
-			break;
+			cutscenePlayer.render(delta, batch);
+			player.render(delta, batch, assetTextures);
 			
-		case "CUTSCENE-END":
+			batch.end();
+			
+			uiStage.draw();
 			
 			break;
 		}

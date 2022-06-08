@@ -5,7 +5,7 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.Align;
 
-import audio.SoundPlayer;
+import interno.mygdx.casachorona.audio.AudioPlayer;
 
 public class DialogueBox extends Table {
 	
@@ -65,8 +65,8 @@ public class DialogueBox extends Table {
 			if (this.soundTimer >= this.animationTotalTime/this.targetText.length()) {
 				this.soundTimer = 0;
 				if (voiceType != 1) {
-					SoundPlayer.playSFX("voice2");
-				} else SoundPlayer.playSFX("voice1");
+					AudioPlayer.playSFX("voice2");
+				} else AudioPlayer.playSFX("voice1");
 			}
 			if (this.animTimer > this.animationTotalTime) {
 				state = STATE.IDLE;

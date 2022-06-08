@@ -2,7 +2,7 @@ package interno.mygdx.casachorona.dialogue;
 
 public class DialogueDatabase {
 
-	private static Dialogue[] dialogues = new Dialogue[28];
+	private static Dialogue[] dialogues = new Dialogue[32];
 	
 	public static void CreateDialogueDatabase() {
 		
@@ -489,6 +489,56 @@ public class DialogueDatabase {
 		node1.setEnd();
 		dialogue.addDialogueNode(node1);
 		DialogueDatabase.dialogues[27] = dialogue;
+		
+		//intro0
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Eu não deveria ter caído no papo daqueles caras...", 0);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[28] = dialogue;
+		
+		//intro1
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Garoto Forte: Você sabia que há uma casa\nassombrada aqui no bairro?", 0);
+		node2 = new DialogueNode("Garoto de boné: Acho que não né, você se\nmudou a pouco tempo", 1);
+		node3 = new DialogueNode("Garoto alto: Vamos fazer o seguinte, se\nvocê entrar na casa e destrancar a porta da frente para nós...", 2);
+		node4 = new DialogueNode("...vamos considerar te colocar no nosso time\nde basquete, novato", 3);
+		node4.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		DialogueDatabase.dialogues[29] = dialogue;
+		
+		//intro2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Então...Eu só tenho de entrar pela garagem e\ndar um jeito de abrir a porta da frente...?", 0);
+		node2 = new DialogueNode("Garoto alto: Isso mesmo.", 1);
+		node3 = new DialogueNode("...", 2);
+		node4 = new DialogueNode("Ok.", 3);
+		node5 = new DialogueNode("Garoto alto: Boa sorte novato.", 4);
+		node5.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		dialogue.addDialogueNode(node5);
+		DialogueDatabase.dialogues[30] = dialogue;
+
+		//cutscene porta
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Cara, a porta tá trancada, eu preciso de uma chave", 0);
+		node2 = new DialogueNode("O que é isso, algum tipo de jogo de exploração?", 1);
+		node3 = new DialogueNode("...", 2);
+		node4 = new DialogueNode("Não consigo ver os garotos pela janela...", 3);
+		node5 = new DialogueNode("Bem, eles devem estar me esperando em outro lugar.", 4);
+		node5.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		dialogue.addDialogueNode(node5);
+		DialogueDatabase.dialogues[31] = dialogue;
 	}
 	
 	public static Dialogue getDialogue(int id) {
