@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 import interno.mygdx.casachorona.game.Settings;
+import interno.mygdx.casachorona.ui.DialogueBox;
 import interno.mygdx.casachorona.ui.Inventory;
 import interno.mygdx.casachorona.world.Door;
 import interno.mygdx.casachorona.world.Location;
@@ -25,12 +26,14 @@ public class PlayerPointer {
 	private Inventory inventory;
 	private boolean selectedItem = false;
 	private ItemType selectedItemType = null;
+	private DialogueBox dialogueBox;
 	
-	public PlayerPointer(int x, int y, World world, Inventory inventory) {
+	public PlayerPointer(int x, int y, World world, Inventory inventory, DialogueBox  dialogueBox) {
 		this.x = x;
 		this.y = y;
 		this.world = world;
 		this.inventory = inventory;
+		this.dialogueBox = dialogueBox;
 	}
 	
 	public int getX() {
@@ -56,25 +59,27 @@ public class PlayerPointer {
 	public void movePointer(int x, int y) {
 		this.x = x;
 		this.y = y;
-		if(!this.selectedItem) {
-			Item item = inventory.getItem(x, y);
-			if (item != null && item.isPickedUp()) {
-				this.pointerType = PointerType.HIGHLIGHT;
-				return;
+		if(!dialogueBox.isVisible()) {
+			if(!this.selectedItem) {
+				Item item = inventory.getItem(x, y);
+				if (item != null && item.isPickedUp()) {
+					this.pointerType = PointerType.HIGHLIGHT;
+					return;
+				}
+				Scene scene = world.findCurrentScene(this.currentLocation);
+				Door door = scene.getDoor(x, y);
+				if (door != null) {
+					this.pointerType = door.getPointerType();
+					return;
+				}
+				SceneProp prop = scene.getProp(x, y);
+				if (prop != null) {
+					this.pointerType = PointerType.HIGHLIGHT;
+					return;
+				}
+				this.pointerType = PointerType.DEFAULT;
 			}
-			Scene scene = world.findCurrentScene(this.currentLocation);
-			Door door = scene.getDoor(x, y);
-			if (door != null) {
-				this.pointerType = door.getPointerType();
-				return;
-			}
-			SceneProp prop = scene.getProp(x, y);
-			if (prop != null) {
-				this.pointerType = PointerType.HIGHLIGHT;
-				return;
-			}
-			this.pointerType = PointerType.DEFAULT;
-		}
+		} else this.pointerType = PointerType.DEFAULT;
 	}
 	
 	public boolean isClicked() {

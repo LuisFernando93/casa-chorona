@@ -137,7 +137,8 @@ public class SceneProp implements Interactable {
 				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(25)); //bau trancado
 			} else if (player.getSelectedItemType() == ItemType.HAMMER) {
 				//fim de jogo
-				System.out.println("fim do jogo");
+				CutscenePlayer.setActiveCutscene(5);
+				GameScreen.setGameState("cutscenePlayer");
 			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
 			break;
 		case 9:

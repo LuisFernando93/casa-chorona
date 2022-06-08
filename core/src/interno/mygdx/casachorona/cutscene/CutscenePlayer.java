@@ -22,6 +22,24 @@ public class CutscenePlayer {
 		this.events.put(2, new CutsceneEvent(dialogueBox, cutsceneTextures, 2, -1)); //fim da intro
 		this.events.put(3, new CutsceneEvent(dialogueBox, cutsceneTextures, 3, -1)); //porta
 		this.events.put(4, new CutsceneEvent(dialogueBox, cutsceneTextures, 4, -1)); //fanta
+		this.events.put(5, new CutsceneEvent(dialogueBox, cutsceneTextures, 5, 6)); //ending
+		this.events.put(6, new CutsceneEvent(dialogueBox, cutsceneTextures, 6, 7));
+		this.events.put(7, new CutsceneEvent(dialogueBox, cutsceneTextures, 7, 8));
+		this.events.put(8, new CutsceneEvent(dialogueBox, cutsceneTextures, 8, 9));
+		this.events.put(9, new CutsceneEvent(dialogueBox, cutsceneTextures, 9, 10));
+		this.events.put(10, new CutsceneEvent(dialogueBox, cutsceneTextures, 10, 11));
+		this.events.put(11, new CutsceneEvent(dialogueBox, cutsceneTextures, 11, 12));
+		this.events.put(12, new CutsceneEvent(dialogueBox, cutsceneTextures, 12, 13));
+		this.events.put(13, new CutsceneEvent(dialogueBox, cutsceneTextures, 13, 14));
+		this.events.put(14, new CutsceneEvent(dialogueBox, cutsceneTextures, 14, 15));
+		this.events.put(15, new CutsceneEvent(dialogueBox, cutsceneTextures, 15, 16));
+		this.events.put(16, new CutsceneEvent(dialogueBox, cutsceneTextures, 16, 17));
+		this.events.put(17, new CutsceneEvent(dialogueBox, cutsceneTextures, 17, 18));
+		this.events.put(18, new CutsceneEvent(dialogueBox, cutsceneTextures, 18, 19));
+		this.events.put(19, new CutsceneEvent(dialogueBox, cutsceneTextures, 19, 20));
+		this.events.put(20, new CutsceneEvent(dialogueBox, cutsceneTextures, 20, 21));
+		this.events.put(21, new CutsceneEvent(dialogueBox, cutsceneTextures, 21, 22));
+		this.events.put(22, new CutsceneEvent(dialogueBox, cutsceneTextures, 22, -1)); //fim do ending
 	}
 
 	public static void setActiveCutscene(int activeCutscene) {
@@ -43,6 +61,10 @@ public class CutscenePlayer {
 		case 4:
 			GameScreen.setGameState("game");
 			AudioPlayer.playSoundtrack("game");
+			break;
+		case 22:
+			GameScreen.setGameState("credits");
+			AudioPlayer.playSoundtrack("credits");
 			break;
 		}
 	}

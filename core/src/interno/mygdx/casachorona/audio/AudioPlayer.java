@@ -10,7 +10,7 @@ public class AudioPlayer {
 	private static Sound credits = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/credits soundtrack.wav"));
 	private static Sound cutscene1 = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/custcene1 soundtrack.wav"));
 	private static Sound cutsceneFanta = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/cutscene fanta soundtrack.wav"));
-	private static Sound cutsceneEnding = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/cutsceneEnding soundtrack.wav"));
+	private static Sound cutsceneEnding = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/cutsceneEnding soundtrack.mp3"));
 	private static Sound sfxMenu = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/menu sfx.mp3"));
 	private static Sound sfxStair = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/stair sfx.mp3"));
 	private static Sound sfxItem = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/item sfx.mp3"));
@@ -46,7 +46,7 @@ public class AudioPlayer {
 			cutsceneFanta.loop(0.025f);
 			break;
 		case "cutsceneEnding":
-			cutsceneEnding.loop(0.025f);
+			cutsceneEnding.loop(0.2f);
 			break;
 		default:
 			System.out.println("musica nao encontrada");
