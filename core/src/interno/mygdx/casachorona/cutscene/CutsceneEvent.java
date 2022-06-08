@@ -68,6 +68,7 @@ public class CutsceneEvent {
 				break;
 			case 4:
 				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(9));
+				AudioPlayer.playSoundtrack("cutsceneFanta");
 				break;
 			default:
 				break;
@@ -100,6 +101,12 @@ public class CutsceneEvent {
 			batch.draw(cutsceneTextures.getEmptyBlock(), 0, 0, Settings.SCREEN_WIDTH*Settings.SCREEN_SCALE, Settings.SCREEN_HEIGHT*Settings.SCREEN_SCALE);
 			textureRegion = cutsceneTextures.getAnimatedTextures("door")[0];
 			batch.draw(textureRegion, 81*Settings.SCREEN_SCALE, (Settings.SCREEN_HEIGHT-33-textureRegion.getRegionHeight())*Settings.SCREEN_SCALE, 318*Settings.SCREEN_SCALE, 191*Settings.SCREEN_SCALE);
+			break;
+		case 4:
+			batch.draw(cutsceneTextures.getEmptyBlock(), 0, 0, Settings.SCREEN_WIDTH*Settings.SCREEN_SCALE, Settings.SCREEN_HEIGHT*Settings.SCREEN_SCALE);
+			textureRegion = cutsceneTextures.getAnimatedTextures("fanta")[4];
+			batch.draw(textureRegion, 81*Settings.SCREEN_SCALE, (Settings.SCREEN_HEIGHT-33-textureRegion.getRegionHeight())*Settings.SCREEN_SCALE, 318*Settings.SCREEN_SCALE, 191*Settings.SCREEN_SCALE);
+			break;
 		default:
 			System.out.println("Erro ao carregar cutscene");
 			break;

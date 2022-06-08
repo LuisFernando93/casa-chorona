@@ -21,7 +21,7 @@ public class CutscenePlayer {
 		this.events.put(1, new CutsceneEvent(dialogueBox, cutsceneTextures, 1, 2));
 		this.events.put(2, new CutsceneEvent(dialogueBox, cutsceneTextures, 2, -1)); //fim da intro
 		this.events.put(3, new CutsceneEvent(dialogueBox, cutsceneTextures, 3, -1)); //porta
-		this.events.put(4, new CutsceneEvent(dialogueBox, cutsceneTextures, 4, -1));
+		this.events.put(4, new CutsceneEvent(dialogueBox, cutsceneTextures, 4, -1)); //fanta
 	}
 
 	public static void setActiveCutscene(int activeCutscene) {
@@ -31,6 +31,16 @@ public class CutscenePlayer {
 	private void exitPlayer() {
 		switch (this.lastCutscene) {
 		case 2:
+			GameScreen.setGameState("game");
+			AudioPlayer.playSoundtrack("game");
+			break;
+		
+		case 3:
+			GameScreen.setGameState("game");
+			AudioPlayer.playSoundtrack("game");
+			break;
+		
+		case 4:
 			GameScreen.setGameState("game");
 			AudioPlayer.playSoundtrack("game");
 			break;

@@ -1,5 +1,6 @@
 package interno.mygdx.casachorona.world;
 
+import interno.mygdx.casachorona.cutscene.CutscenePlayer;
 import interno.mygdx.casachorona.dialogue.DialogueDatabase;
 import interno.mygdx.casachorona.game.Settings;
 import interno.mygdx.casachorona.model.ItemType;
@@ -137,6 +138,17 @@ public class SceneProp implements Interactable {
 			} else if (player.getSelectedItemType() == ItemType.HAMMER) {
 				//fim de jogo
 				System.out.println("fim do jogo");
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 9:
+			if (!player.hasSelectedItem()) {
+				if (!World.hasArrivedFrontDoor()) {
+					World.interactFrontDoor();
+					CutscenePlayer.setActiveCutscene(3);
+					GameScreen.setGameState("cutscenePlayer");
+				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(31));
+			} else if (player.getSelectedItemType() == ItemType.HAMMER) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(32));
 			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
 			break;
 		}

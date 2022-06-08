@@ -1,5 +1,6 @@
 package interno.mygdx.casachorona.world;
 
+import interno.mygdx.casachorona.cutscene.CutscenePlayer;
 import interno.mygdx.casachorona.dialogue.DialogueDatabase;
 import interno.mygdx.casachorona.model.ItemType;
 import interno.mygdx.casachorona.model.PlayerPointer;
@@ -20,6 +21,7 @@ public class World {
 	private static boolean arrivedScene7 = false;
 	private static boolean arrivedScene8 = false;
 	private static boolean arrivedScene9 = false;
+	private static boolean arrivedFrontDoor = false;
 	private static boolean rememberFanta = false;
 	private static int propsInteractedScene9 = 0;
 
@@ -37,6 +39,14 @@ public class World {
 		return World.arrivedScene9;
 	}
 	
+	public static boolean hasArrivedFrontDoor() {
+		return World.arrivedFrontDoor;
+	}
+	
+	public static void interactFrontDoor() {
+		World.arrivedFrontDoor = true;
+	}
+	
 	public void createWorld() {
 		
 		scenes[0] = new Scene(Location.SCENE1, 1, 2);
@@ -47,12 +57,13 @@ public class World {
 		
 		scenes[1] = new Scene(Location.SCENE2, 2, 0);
 		scenes[1].addDoor(new Door(0, 138, 12, 160, Location.SCENE1, false, null, false, PointerType.LEFT));   //porta esquerda
-		scenes[1].addDoor(new Door(468, 137, 12, 160, Location.SCENE3, false, null, false, PointerType.RIGHT)); //porta direita
+		scenes[1].addDoor(new Door(460, 137, 20, 160, Location.SCENE3, false, null, false, PointerType.RIGHT)); //porta direita
 		
-		scenes[2] = new Scene(Location.SCENE3, 3, 0);
+		scenes[2] = new Scene(Location.SCENE3, 3, 1);
 		scenes[2].addDoor(new Door(8, 139, 39, 139, Location.SCENE6, true, ItemType.KEY1, false, PointerType.LEFT));    //porta esquerda 
 		scenes[2].addDoor(new Door(172, 290, 135, 30, Location.SCENE2, false, null, false, PointerType.DOWN));  //porta atras
 		scenes[2].addDoor(new Door(443, 101, 36, 177, Location.SCENE4, false, null, false, PointerType.RIGHT));  //porta direita
+		scenes[2].addProp(new SceneProp(200, 110, 84, 125, 9)); //porta da frente
 		
 		scenes[3] = new Scene(Location.SCENE4, 2, 0);
 		scenes[3].addDoor(new Door(36, 118, 24, 140, Location.SCENE5, false, null, true, PointerType.UP));  //escadas a esquerda
@@ -99,7 +110,8 @@ public class World {
 			GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(8));
 			World.arrivedScene3 = true;
 		} else if(!World.arrivedScene4 && player.getCurrentLocation() == Location.SCENE4) {
-			GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(9));
+			CutscenePlayer.setActiveCutscene(4);
+			GameScreen.setGameState("cutscenePlayer");
 			World.arrivedScene4 = true;
 			World.metFanta = true;
 		} else if(!World.arrivedScene5 && player.getCurrentLocation() == Location.SCENE5) {
@@ -137,7 +149,9 @@ public class World {
 		World.arrivedScene7 = false;
 		World.arrivedScene8 = false;
 		World.arrivedScene9 = false;
+		World.arrivedFrontDoor = false;
 		World.metFanta = false;
+		World.rememberFanta = false;
 		World.propsInteractedScene9 = 0;
 	}
 	
