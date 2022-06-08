@@ -10,7 +10,7 @@ public class AudioPlayer {
 	private static Sound credits = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/credits soundtrack.wav"));
 	private static Sound cutscene1 = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/custcene1 soundtrack.wav"));
 	private static Sound cutsceneFanta = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/cutscene fanta soundtrack.wav"));
-	private static Sound gameOver = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/gameOver soundtrack.wav"));
+	private static Sound cutsceneEnding = Gdx.audio.newSound(Gdx.files.internal("audio/soundtrack/cutsceneEnding soundtrack.wav"));
 	private static Sound sfxMenu = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/menu sfx.mp3"));
 	private static Sound sfxStair = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/stair sfx.mp3"));
 	private static Sound sfxItem = Gdx.audio.newSound(Gdx.files.internal("audio/sfx/item sfx.mp3"));
@@ -27,7 +27,7 @@ public class AudioPlayer {
 		AudioPlayer.credits.stop();
 		AudioPlayer.cutscene1.stop();
 		AudioPlayer.cutsceneFanta.stop();
-		AudioPlayer.gameOver.stop();
+		AudioPlayer.cutsceneEnding.stop();
 
 		switch (name) {
 		case "game":
@@ -45,8 +45,8 @@ public class AudioPlayer {
 		case "cutsceneFanta":
 			cutsceneFanta.loop(0.025f);
 			break;
-		case "gameOver":
-			gameOver.loop(0.025f);
+		case "cutsceneEnding":
+			cutsceneEnding.loop(0.025f);
 			break;
 		default:
 			System.out.println("musica nao encontrada");
