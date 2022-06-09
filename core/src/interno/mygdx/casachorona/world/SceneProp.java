@@ -284,6 +284,51 @@ public class SceneProp implements Interactable {
 				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(82));
 			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
 			break;
+		case 34: //anjo cena 6
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(83));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 35: //pixel cena 6
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(84));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 36: //cadeira cena6
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(85));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 37: //mesa cena6
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(86));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 38: //estante cena6
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(87));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 39: //teia cena8
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(88));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 40: //janela cena8
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(89));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 41: //roupa cena8
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(90));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 42: //caixa cena8
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(91));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
 		}
 		
 		

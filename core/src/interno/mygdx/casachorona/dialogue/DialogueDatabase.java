@@ -2,7 +2,7 @@ package interno.mygdx.casachorona.dialogue;
 
 public class DialogueDatabase {
 
-	private static Dialogue[] dialogues = new Dialogue[83];
+	private static Dialogue[] dialogues = new Dialogue[92];
 	
 	public static void CreateDialogueDatabase() {
 		
@@ -758,7 +758,7 @@ public class DialogueDatabase {
 		//garrafas cena1
 		dialogue = new Dialogue();
 		node1 = new DialogueNode("Álcool", 0,1);
-		node2 = new DialogueNode("Pode ser perigoso se tiver algum morador de rua\naqui dentro, tenho de tomar cuidado.", 1,1);
+		node2 = new DialogueNode("Pode ser perigoso se tiver algum morador de rua\naqui dentro. Tenho de tomar cuidado.", 1,1);
 		node2.setEnd();
 		dialogue.addDialogueNode(node1);
 		dialogue.addDialogueNode(node2);
@@ -1010,8 +1010,8 @@ public class DialogueDatabase {
 		dialogue = new Dialogue();
 		node1 = new DialogueNode("Alek: Juro que se meu Jordan estragar\neu vou botar fogo nessa casa", 0,1);
 		node2 = new DialogueNode("Fanta: Você se preocupa demais com esse tênis.\nÉ só um tênis!", 1,2);
-		node3 = new DialogueNode("Alek: EI! isso é um J-O-R-D-A-N, você não tem ideia do quão incrível e importante ele é!", 2,1);
-		node4 = new DialogueNode("Alek: Mas irei te explicar, tudo começou em 1985 quand-", 3,2);
+		node3 = new DialogueNode("Alek: EI! isso é um J-O-R-D-A-N, você não tem ideia do quão\nincrível e importante ele é!", 2,1);
+		node4 = new DialogueNode("Alek: Mas irei te explicar, tudo começou em 1985 quand-", 3,1);
 		node5 = new DialogueNode("Fanta: Chega, eu não ligo.", 4, 2);
 		node5.setEnd();
 		dialogue.addDialogueNode(node1);
@@ -1064,7 +1064,7 @@ public class DialogueDatabase {
 		//porta que nao abre cena 5
 		dialogue = new Dialogue();
 		node1 = new DialogueNode("Alek: Essa aqui não abre.", 0,1);
-		node2 = new DialogueNode("Fanta: E nem vai abrir", 1,2);
+		node2 = new DialogueNode("Fanta: E nem vai abrir.", 1,2);
 		node3 = new DialogueNode("Alek: Acho que vou só aceitar isso.", 2,1);
 		node3.setEnd();
 		dialogue.addDialogueNode(node1);
@@ -1074,26 +1074,99 @@ public class DialogueDatabase {
 		
 		//cama cena 7
 		dialogue = new Dialogue();
-		node1 = new DialogueNode("Alek: Aqui deve ser o quarto do casal.\nA cama tá nojenta!", 0,2);
+		node1 = new DialogueNode("Alek: Aqui deve ser o quarto do casal.\nA cama tá nojenta!", 0,1);
 		node1.setEnd();
 		dialogue.addDialogueNode(node1);
 		DialogueDatabase.dialogues[80] = dialogue;
 		
 		//armario cena 7
 		dialogue = new Dialogue();
-		node1 = new DialogueNode("Alek: Ué, tem bastante roupa aqui.\nO pessoal se mudou sem pegar nada?", 0,2);
+		node1 = new DialogueNode("Alek: Ué, tem bastante roupa aqui.\nO pessoal se mudou sem pegar nada?", 0,1);
 		node1.setEnd();
 		dialogue.addDialogueNode(node1);
 		DialogueDatabase.dialogues[81] = dialogue;
 		
 		//raiz cena 7
 		dialogue = new Dialogue();
-		node1 = new DialogueNode("Alek: Bro, vegetação brasileira é meio agressiva demais.", 0,2);
+		node1 = new DialogueNode("Alek: Bro, vegetação brasileira é meio agressiva demais.", 0,1);
 		node1.setEnd();
 		dialogue.addDialogueNode(node1);
 		DialogueDatabase.dialogues[82] = dialogue;
 		
-
+		//anjo cena6
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Hmmm, não reconheço, deve ser um desenho aleatório", 0,1);
+		node2 = new DialogueNode("Fanta: Vai ver eu que pintei quando estava vivo?", 1,2);
+		node3 = new DialogueNode("Alek: Vai que, né.", 2,1);
+		node3.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		DialogueDatabase.dialogues[83] = dialogue;
+		
+		//pixel cena6
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: MEU DEUS! ESSA É A INCRÍVEL OBRA DE NOTCH,\nHUMANO AO CUBO?!?!?", 0,1);
+		node2 = new DialogueNode("Eu amo essa pintura, adoro como ela retrata bem\nnossa realidade", 1,1);
+		node3 = new DialogueNode("Fanta: Nem ideia do que você está falando.", 2,2);
+		node4 = new DialogueNode("Alek: Calado, você não sabe apreciar a arte.", 3,1);
+		node4.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		DialogueDatabase.dialogues[84] = dialogue;
+		
+		//cadeira cena6
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Oloko, uma cadeira Gamer... Quero!", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[85] = dialogue;
+		
+		//mesa cena6
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Muitos números... Não entendo muita coisa, mas tem\nmuito vermelho nesse papel, não deve ser algo bom.", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[86] = dialogue;
+		
+		//estante cena6
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Hmmm, \"Como ser um gênio\", \"Como ficar rico em 5 passos\",\n\"Economia avançada para pessoas avançadas\", \"A arte da guerra\"...", 0,1);
+		node2 = new DialogueNode("Parece tudo meio chato nessa casa.", 1,1);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[87] = dialogue;
+		
+		//teia cena8
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Eai Douglas, desculpa invadir seu lugar assim,\nprometo que vou sair o mais rápido possível.", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[88] = dialogue;
+		
+		//janela cena8
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: O pôr do Sol está bem bonito.", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[89] = dialogue;
+		
+		//roupa cena8
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Essas roupas me lembram alguma coisa.", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[90] = dialogue;
+		
+		//caixa cena8
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Bem, tudo na casa está bagunçado. Era de se esperar que isso estivesse\ntambém, mas o nível de pó aqui tá surreal, aí minha rinite.", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[91] = dialogue;
 	}
 	
 	public static Dialogue getDialogue(int id) {

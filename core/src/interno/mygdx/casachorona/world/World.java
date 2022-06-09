@@ -13,17 +13,17 @@ public class World {
 	
 	private Scene[] scenes;
 	private int nScenes = 9;
-	private static boolean metFanta = true;
-	private static boolean arrivedScene3 = true;
-	private static boolean arrivedScene4 = true;
-	private static boolean arrivedScene5 = true;
-	private static boolean arrivedScene6 = true;
-	private static boolean arrivedScene7 = true;
-	private static boolean arrivedScene8 = true;
+	private static boolean metFanta = false;
+	private static boolean arrivedScene3 = false;
+	private static boolean arrivedScene4 = false;
+	private static boolean arrivedScene5 = false;
+	private static boolean arrivedScene6 = false;
+	private static boolean arrivedScene7 = false;
+	private static boolean arrivedScene8 = false;
 	private static boolean arrivedScene9 = false;
-	private static boolean arrivedFrontDoor = true;
-	private static boolean rememberFanta = true;
-	private static int propsInteractedScene9 = 4;
+	private static boolean arrivedFrontDoor = false;
+	private static boolean rememberFanta = false;
+	private static int propsInteractedScene9 = 0;
 
 
 	public World() {
@@ -95,9 +95,14 @@ public class World {
 		scenes[4].addProp(new SceneProp(141, 83, 31, 38, 29)); //aranha
 		scenes[4].addProp(new SceneProp(68, 81, 31, 119, 30)); //porta
 		
-		scenes[5] = new Scene(Location.SCENE6, 1, 1);
+		scenes[5] = new Scene(Location.SCENE6, 1, 6);
 		scenes[5].addDoor(new Door(0, 131, 26, 163, Location.SCENE3, false, null, false, PointerType.LEFT)); //porta unica
 		scenes[5].addProp(new SceneProp(46, 196, 34, 34, 7)); //cofre
+		scenes[5].addProp(new SceneProp(81, 104, 103, 58, 34)); //anjo
+		scenes[5].addProp(new SceneProp(320, 100, 39, 80, 35)); //pixel
+		scenes[5].addProp(new SceneProp(213, 162, 56, 52, 36)); //cadeira
+		scenes[5].addProp(new SceneProp(185, 220, 101, 24, 37)); //mesa
+		scenes[5].addProp(new SceneProp(387, 107, 62, 159, 38)); //estante
 		
 		scenes[6] = new Scene(Location.SCENE7, 1, 4);
 		scenes[6].addDoor(new Door(340, 117, 61, 120, Location.SCENE5, false, null, false, PointerType.UP)); //porta unica
@@ -106,9 +111,14 @@ public class World {
 		scenes[6].addProp(new SceneProp(7, 112, 76, 187, 32)); //armario
 		scenes[6].addProp(new SceneProp(45, 42, 68, 53, 33)); //raiz
 		
-		scenes[7] = new Scene(Location.SCENE8, 1, 1);
+		scenes[7] = new Scene(Location.SCENE8, 1, 5);
 		scenes[7].addDoor(new Door(173, 290, 114, 30, Location.SCENE5, false, null, true, PointerType.DOWN)); //porta atras
 		scenes[7].addProp(new SceneProp(44, 208, 54, 58, 8)); //bau
+		scenes[7].addProp(new SceneProp(65, 47, 67, 66, 39)); //teia
+		scenes[7].addProp(new SceneProp(202, 94, 88, 88, 40)); //janela
+		scenes[7].addProp(new SceneProp(383, 130, 36, 119, 41)); //roupa
+		scenes[7].addProp(new SceneProp(430, 240, 50, 63, 42)); //caixa
+		
 		
 		scenes[8] = new Scene(Location.SCENE9, 1, 4);
 		scenes[8].addDoor(new Door(26, 142, 30, 115, Location.SCENE5, false, null, false, PointerType.LEFT)); //porta unica

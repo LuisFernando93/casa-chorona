@@ -53,7 +53,7 @@ public class GameScreen extends AbstractScreen {
 	private Table dialogRoot;
 	private DialogueBox dialogueBox;
 	
-	private static String gameState = "game";
+	private static String gameState = "cutscenePlayer";
 
 	public GameScreen(CasaChorona game) {
 		super(game);
