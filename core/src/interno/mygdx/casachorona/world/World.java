@@ -74,23 +74,37 @@ public class World {
 		scenes[2].addDoor(new Door(443, 101, 36, 177, Location.SCENE4, false, null, false, PointerType.RIGHT));  //porta direita
 		scenes[2].addProp(new SceneProp(200, 110, 84, 125, 9)); //porta da frente
 		
-		scenes[3] = new Scene(Location.SCENE4, 2, 0);
+		scenes[3] = new Scene(Location.SCENE4, 2, 7);
 		scenes[3].addDoor(new Door(36, 118, 24, 140, Location.SCENE5, false, null, true, PointerType.UP));  //escadas a esquerda
 		scenes[3].addDoor(new Door(446, 143, 34, 130, Location.SCENE3, false, null, false, PointerType.RIGHT)); //porta direita
+		scenes[3].addProp(new SceneProp(393, 185, 40, 60, 20)); //teia
+		scenes[3].addProp(new SceneProp(343, 273, 77, 32, 21)); //foto chao
+		scenes[3].addProp(new SceneProp(200, 163, 87, 93, 22)); //sofa
+		scenes[3].addProp(new SceneProp(299, 186, 11, 23, 23)); //bebida
+		scenes[3].addProp(new SceneProp(156, 282, 49, 30, 24)); //jogo
+		scenes[3].addProp(new SceneProp(89, 114, 48, 47, 25)); //foto parede
+		scenes[3].addProp(new SceneProp(62, 259, 73, 59, 26)); //mesa
 		
-		scenes[4] = new Scene(Location.SCENE5, 4, 0);
+		scenes[4] = new Scene(Location.SCENE5, 4, 4);
 		scenes[4].addDoor(new Door(188, 10, 110, 28, Location.SCENE8, true, ItemType.KEY2, true, PointerType.UP)); //porta em cima
 		scenes[4].addDoor(new Door(5, 66, 44, 198, Location.SCENE9, false, null, false, PointerType.LEFT)); //primeira porta esquerda
 		scenes[4].addDoor(new Door(385, 83, 30, 123, Location.SCENE4, false, null, true, PointerType.DOWN)); //escada a direita
 		scenes[4].addDoor(new Door(435, 65, 39, 202, Location.SCENE7, false, null, false, PointerType.RIGHT)); //ultima porta a direita
+		scenes[4].addProp(new SceneProp(225, 82, 40, 51, 27)); //foto parede
+		scenes[4].addProp(new SceneProp(317, 188, 34, 21, 28)); //vidro
+		scenes[4].addProp(new SceneProp(141, 83, 31, 38, 29)); //aranha
+		scenes[4].addProp(new SceneProp(68, 81, 31, 119, 30)); //porta
 		
 		scenes[5] = new Scene(Location.SCENE6, 1, 1);
 		scenes[5].addDoor(new Door(0, 131, 26, 163, Location.SCENE3, false, null, false, PointerType.LEFT)); //porta unica
 		scenes[5].addProp(new SceneProp(46, 196, 34, 34, 7)); //cofre
 		
-		scenes[6] = new Scene(Location.SCENE7, 1, 1);
+		scenes[6] = new Scene(Location.SCENE7, 1, 4);
 		scenes[6].addDoor(new Door(340, 117, 61, 120, Location.SCENE5, false, null, false, PointerType.UP)); //porta unica
 		scenes[6].addProp(new SceneProp(116, 193, 43, 60, 2)); //movel ao lado da cama
+		scenes[6].addProp(new SceneProp(196, 182, 94, 77, 31)); //cama
+		scenes[6].addProp(new SceneProp(7, 112, 76, 187, 32)); //armario
+		scenes[6].addProp(new SceneProp(45, 42, 68, 53, 33)); //raiz
 		
 		scenes[7] = new Scene(Location.SCENE8, 1, 1);
 		scenes[7].addDoor(new Door(173, 290, 114, 30, Location.SCENE5, false, null, true, PointerType.DOWN)); //porta atras

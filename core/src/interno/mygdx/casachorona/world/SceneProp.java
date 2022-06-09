@@ -214,7 +214,78 @@ public class SceneProp implements Interactable {
 				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(63));
 			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
 			break;
+		case 20: //teia cena4
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(68));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 21: //foto chao cena4
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(69));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 22: //sofa cena4
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(70));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 23: //bebida cena4
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(71));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 24: //jogo cena4
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(72));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 25: //foto parede cena4
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(73));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break; 
+		case 26: //mesa cena4
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(74));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 27: //foto parede cena5
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(75));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 28: //vidro cena 5
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(76));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 29: //aranha cena 5
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(77));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 30: //porta cena 5
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(79));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 31: //cama cena 7
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(80));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 32: //armario cena 7
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(81));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 33: //raiz cena 7
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(82));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
 		}
+		
 		
 		return true;
 	}

@@ -80,7 +80,10 @@ public class Door implements Interactable{
 				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(5)); //porta da garagem trancada
 				AudioPlayer.playSFX("locked");
 				return false;
-			} else {
+			} else if(this.key == ItemType.KEY2){
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(78)); //sotao trancado
+				AudioPlayer.playSFX("locked");
+			} else {	
 			GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(0)); //porta trancada
 			AudioPlayer.playSFX("locked");
 			return false;
