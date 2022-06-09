@@ -53,7 +53,7 @@ public class GameScreen extends AbstractScreen {
 	private Table dialogRoot;
 	private DialogueBox dialogueBox;
 	
-	private static String gameState = "cutscenePlayer";
+	private static String gameState = "menu";
 
 	public GameScreen(CasaChorona game) {
 		super(game);
@@ -161,6 +161,15 @@ public class GameScreen extends AbstractScreen {
 			
 		case "menu": 
 			System.out.println("menu");
+			batch.begin();
+			
+			//renderizar cenario
+			batch.draw(backgroundTextures.getMenuArt("background"), 80 * Settings.SCREEN_SCALE, 0, 320 * Settings.SCREEN_SCALE, 320 *Settings.SCREEN_SCALE);
+			batch.draw(backgroundTextures.getMenuArt("menu"), 208 * Settings.SCREEN_SCALE, 102*Settings.SCREEN_SCALE, 64 * Settings.SCREEN_SCALE, 96 *Settings.SCREEN_SCALE);
+
+			player.render(delta, batch, assetTextures);
+			
+			batch.end();
 			break;
 		
 		case "credits": 

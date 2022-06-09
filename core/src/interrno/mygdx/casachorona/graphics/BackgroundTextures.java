@@ -18,6 +18,9 @@ public class BackgroundTextures {
 	private Texture scene7art;
 	private Texture scene8art;
 	private Texture scene9art;
+	private Texture menuArt;
+	private Texture creditsArt;
+	private Texture backgroundArt;
 	
 	
 	public BackgroundTextures() {
@@ -32,6 +35,9 @@ public class BackgroundTextures {
 		this.scene7art = new Texture(Gdx.files.internal("graphics/quartoPais-scene7.png"));
 		this.scene8art = new Texture(Gdx.files.internal("graphics/sotao-scene8.png"));
 		this.scene9art = new Texture(Gdx.files.internal("graphics/quartoFanta-scene9.png"));
+		this.menuArt = new Texture(Gdx.files.internal("graphics/menu.png"));
+		this.creditsArt = new Texture(Gdx.files.internal("graphics/credits.png"));
+		this.backgroundArt = new Texture(Gdx.files.internal("graphics/backgroundMenu.png"));
 	}
 
 	public Texture getSceneArt(Location sceneLocation) {
@@ -63,6 +69,19 @@ public class BackgroundTextures {
 			System.out.println("erro ao carregar cenario");
 			return null;
 		}
+	}
+	
+	public Texture getMenuArt(String name) {
+		switch (name) {
+		case "menu":
+			return menuArt;
+		case "credits":
+			return creditsArt;
+		case "background":
+			return backgroundArt;
+		}
+		System.out.println("erro ao carregar mensagem de menu");
+		return null;
 	}
 	
 }
