@@ -13,17 +13,17 @@ public class World {
 	
 	private Scene[] scenes;
 	private int nScenes = 9;
-	private static boolean metFanta = false;
-	private static boolean arrivedScene3 = false;
-	private static boolean arrivedScene4 = false;
-	private static boolean arrivedScene5 = false;
-	private static boolean arrivedScene6 = false;
-	private static boolean arrivedScene7 = false;
-	private static boolean arrivedScene8 = false;
+	private static boolean metFanta = true;
+	private static boolean arrivedScene3 = true;
+	private static boolean arrivedScene4 = true;
+	private static boolean arrivedScene5 = true;
+	private static boolean arrivedScene6 = true;
+	private static boolean arrivedScene7 = true;
+	private static boolean arrivedScene8 = true;
 	private static boolean arrivedScene9 = false;
-	private static boolean arrivedFrontDoor = false;
-	private static boolean rememberFanta = false;
-	private static int propsInteractedScene9 = 0;
+	private static boolean arrivedFrontDoor = true;
+	private static boolean rememberFanta = true;
+	private static int propsInteractedScene9 = 4;
 
 
 	public World() {
@@ -49,15 +49,24 @@ public class World {
 	
 	public void createWorld() {
 		
-		scenes[0] = new Scene(Location.SCENE1, 1, 2);
+		scenes[0] = new Scene(Location.SCENE1, 1, 7);
 		scenes[0].addDoor(new Door(420, 134, 27, 114, Location.SCENE2, true, ItemType.FLASHLIGHT, false, PointerType.RIGHT)); //porta direita
 		scenes[0].addProp(new SceneProp(313, 282, 37, 15, 0)); //lanterna
 		scenes[0].addProp(new SceneProp(439, 275, 22, 28, 1)); //martelo
+		scenes[0].addProp(new SceneProp(0, 250, 132, 70, 10)); //bicicleta
+		scenes[0].addProp(new SceneProp(0, 18, 15, 28, 11)); //teia
+		scenes[0].addProp(new SceneProp(58, 156, 64, 36, 12)); //cerveja
+		scenes[0].addProp(new SceneProp(286, 64, 21, 18, 13)); //bola
+		scenes[0].addProp(new SceneProp(125, 58, 79, 23, 14)); //brinquedos
 		
-		
-		scenes[1] = new Scene(Location.SCENE2, 2, 0);
+		scenes[1] = new Scene(Location.SCENE2, 2, 5);
 		scenes[1].addDoor(new Door(0, 138, 12, 160, Location.SCENE1, false, null, false, PointerType.LEFT));   //porta esquerda
 		scenes[1].addDoor(new Door(460, 137, 20, 160, Location.SCENE3, false, null, false, PointerType.RIGHT)); //porta direita
+		scenes[1].addProp(new SceneProp(66, 184, 157, 20, 15)); //pia
+		scenes[1].addProp(new SceneProp(253, 183, 69, 79, 16)); //fogao
+		scenes[1].addProp(new SceneProp(249, 124, 64, 19, 17)); //pano
+		scenes[1].addProp(new SceneProp(345, 93, 73, 161, 18)); //geladeira
+		scenes[1].addProp(new SceneProp(172, 97, 28, 30, 19)); //relogio
 		
 		scenes[2] = new Scene(Location.SCENE3, 3, 1);
 		scenes[2].addDoor(new Door(8, 139, 39, 139, Location.SCENE6, true, ItemType.KEY1, false, PointerType.LEFT));    //porta esquerda 

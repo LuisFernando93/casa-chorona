@@ -48,7 +48,7 @@ public class Scene {
 				return;
 			}
 		}
-		System.out.println("prop nao inserido na cena");
+		System.out.println("prop nao inserido na cena " + this.location);
 	}
 	
 	public SceneProp getProp(int x, int y) { //procura se existe um prop nesta coordenada, e retorna o prop se houver

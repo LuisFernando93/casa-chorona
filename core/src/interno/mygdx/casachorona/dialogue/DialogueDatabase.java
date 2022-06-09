@@ -2,7 +2,7 @@ package interno.mygdx.casachorona.dialogue;
 
 public class DialogueDatabase {
 
-	private static Dialogue[] dialogues = new Dialogue[51];
+	private static Dialogue[] dialogues = new Dialogue[68];
 	
 	public static void CreateDialogueDatabase() {
 		
@@ -749,6 +749,168 @@ public class DialogueDatabase {
 		node1.setEnd();
 		dialogue.addDialogueNode(node1);
 		DialogueDatabase.dialogues[50] = dialogue;
+		
+		//bicicleta cena1
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Essa bicicleta é realmente BEM antiga, aposto que\nela se desmonta se eu tentasse subir.", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[51] = dialogue;
+		
+		//teia cena1
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Argh, aranhas...", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[52] = dialogue;
+		
+		//garrafas cena1
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Álcool", 0,1);
+		node2 = new DialogueNode("Pode ser perigoso se tiver algum morador de rua\naqui dentro, tenho de tomar cuidado.", 1,1);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[53] = dialogue;
+		
+		//brinquedos cena1
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Isso aqui é beeem... Feio. Não tem outra palavra,\nsó muito feio.", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[54] = dialogue;
+		
+		
+		//bola cena1
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Aaaa cara uma bola! Uma pena que esteja meio murcha...\nQue saudades de jogar basquete com o pessoal...", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[55] = dialogue;
+		
+		//bicicleta com fanta cena1
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Acha que essa bike era sua?", 0,1);
+		node2 = new DialogueNode("Fanta: Não sei. Mas acho que não consigo andar nela agora.", 1, 2);
+		node3 = new DialogueNode("Alek: Ava", 2,1);
+		node3.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		DialogueDatabase.dialogues[56] = dialogue;
+		
+		//brinquedos com fanta cena1
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Sabe o que são essas coisas feias aqui?", 0,1);
+		node2 = new DialogueNode("Fanta: Ei! Eu acho fofo.", 1, 2);
+		node3 = new DialogueNode("Alek: Aham, é sim po.", 2,1);
+		node3.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		DialogueDatabase.dialogues[57] = dialogue;
+		
+		//marreta com fanta cena1
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Acho que o jeito mais fácil de abrir as portas\né usando essa marreta heim.", 0,1);
+		node2 = new DialogueNode("Fanta: Como se você conseguisse levantar essa marreta\ncom esses bracinhos né.", 1,2);
+		node3 = new DialogueNode("Alek: ...", 2,1);
+		node4 = new DialogueNode("Alek: Coé.", 3,1);
+		node4.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		DialogueDatabase.dialogues[58] = dialogue;
+		
+		//pia cena2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Nossa, isso aqui tá um nojo viu!", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[59] = dialogue;
+		
+		//fogao cena2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Cuidado Alek, você não quer estragar seu tênis novo\npor causa desse vidro no chão.", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[60] = dialogue;
+		
+		//pano cena2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("AAAAA QUE FOFO.", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[61] = dialogue;
+		
+		//geladeira cena2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Oooo de casa, será que tem algo para comer aqui?", 0,1);
+		node2 = new DialogueNode("...Ok, isso tá muito nojento.", 1,1);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[62] = dialogue;
+		
+		//relogio cena2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Odeio relógio analógico... ", 0,1);
+		node2 = new DialogueNode("Parado exatamente às 3, seria da manhã ou da tarde?", 1,1);
+		node3 = new DialogueNode("Se for da manhã, significa que a casa é assombrada?", 2,1);
+		node3.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		DialogueDatabase.dialogues[63] = dialogue;
+		
+		//pia com fanta cena2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: nossa, isso aqui tá um nojo viu.", 0,1);
+		node2 = new DialogueNode("Fanta: Esperava o que? Não tenho mão para limpar as coisas.", 1,2);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[64] = dialogue;
+		
+		//geladeira com fanta cena2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Fanta: Você não vai achar nada para comer aí, nem pense nisso.", 0,1);
+		node1.setEnd();
+		dialogue.addDialogueNode(node1);
+		DialogueDatabase.dialogues[65] = dialogue;
+		
+		//relogio com fanta cena2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Parou em 3am, sabia que estava assombrada.", 0,1);
+		node2 = new DialogueNode("Fanta: Tenho quase certeza que não parou em 3 horas.", 1,2);
+		node2.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		DialogueDatabase.dialogues[66] = dialogue;
+		
+		//pano cena2
+		dialogue = new Dialogue();
+		node1 = new DialogueNode("Alek: Olha que fofo!", 0,1);
+		node2 = new DialogueNode("Fanta: ...", 1,2);
+		node3 = new DialogueNode("Fanta: Eu já tinha visto isso, eu meio que estou preso aqui.", 2,2);
+		node4 = new DialogueNode("Alek: Ah é.", 3,1);
+		node5 = new DialogueNode("Fanta: Mas você falou com tanto entusiasmo.\nVocê deve gostar de gato né.", 4,2);
+		node6 = new DialogueNode("Alek: ... Algum problema com isso?", 5,1);
+		node7 = new DialogueNode("Fanta: Não. Hehehe", 6,2);
+		node8 = new DialogueNode("Alek: ...", 7,1);
+		node8.setEnd();
+		dialogue.addDialogueNode(node1);
+		dialogue.addDialogueNode(node2);
+		dialogue.addDialogueNode(node3);
+		dialogue.addDialogueNode(node4);
+		dialogue.addDialogueNode(node5);
+		dialogue.addDialogueNode(node6);
+		dialogue.addDialogueNode(node7);
+		dialogue.addDialogueNode(node8);
+		DialogueDatabase.dialogues[67] = dialogue;
+		
+		
 	}
 	
 	public static Dialogue getDialogue(int id) {

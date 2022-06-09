@@ -66,9 +66,9 @@ public class SceneProp implements Interactable {
 					} else {
 						GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(27)); //ja pegou o martelo
 					}
-				} else {
-					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(7)); //nao pega o martelo
-				}
+				} else if(World.hasMeetFanta()){
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(58)); //nao pega, mas com o fanta
+				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(7)); //nao pega o martelo
 			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
 			break;
 		case 2:
@@ -152,7 +152,70 @@ public class SceneProp implements Interactable {
 				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(32));
 			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
 			break;
+		case 10: //bicicleta cena1
+			if (!player.hasSelectedItem()) {
+				if (World.hasMeetFanta()) {
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(56));
+				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(51));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 11: //teias cena1
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(52));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 12: //garrafas cena1
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(53));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 13: //bola cena1
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(55));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 14: //brinquenos cena1
+			if (!player.hasSelectedItem()) {
+				if (World.hasMeetFanta()) {
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(57));
+				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(54));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 15://pia cena2
+			if (!player.hasSelectedItem()) {
+				if (World.hasMeetFanta()) {
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(64));
+				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(59));;
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 16: //fogao cena2
+			if (!player.hasSelectedItem()) {
+				GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(60));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 17: //pano cena2
+			if (!player.hasSelectedItem()) {
+				if (World.hasMeetFanta()) {
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(67));
+				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(61));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 18: //geladeira cena2
+			if (!player.hasSelectedItem()) {
+				if (World.hasMeetFanta()) {
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(65));
+				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(62));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
+		case 19: //relogio
+			if (!player.hasSelectedItem()) {
+				if (World.hasMeetFanta()) {
+					GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(66));
+				} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(63));
+			} else GameScreen.getDialogueController().startDialogue(DialogueDatabase.getDialogue(2)); //item errado
+			break;
 		}
+		
 		return true;
 	}
 }
