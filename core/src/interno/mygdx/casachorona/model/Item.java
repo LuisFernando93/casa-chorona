@@ -44,6 +44,10 @@ public class Item implements Interactable{
 	public void pickUp() {
 		this.pickedUp = true;
 	}
+	
+	public void reset() {
+		this.pickedUp = false;
+	}
 
 	public boolean isPickedUp() {
 		return pickedUp;

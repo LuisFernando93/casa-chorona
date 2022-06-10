@@ -350,7 +350,7 @@ public class DialogueDatabase {
 		node5 = new DialogueNode("Fanta: ...", 4,2);
 		node6 = new DialogueNode("Fanta: M-Minha cabeça dói. Eu estava quase\nme lembrando... Por que...?", 5,2);
 		node7 = new DialogueNode("Alek: Calma calma, fica tranquilo, a gente\ntem tempo, vamos lembrar de tudo, ok?", 6);
-		node8 = new DialogueNode("Fanta: ... Ok", 7,2);
+		node8 = new DialogueNode("Fanta: ... Ok.", 7,2);
 		node8.setEnd();
 		dialogue.addDialogueNode(node1);
 		dialogue.addDialogueNode(node2);
@@ -500,9 +500,9 @@ public class DialogueDatabase {
 		//intro1
 		dialogue = new Dialogue();
 		node1 = new DialogueNode("Garoto Forte: Você sabia que há uma casa\nassombrada aqui no bairro?", 0);
-		node2 = new DialogueNode("Garoto de boné: Acho que não né, você se\nmudou a pouco tempo", 1);
-		node3 = new DialogueNode("Garoto alto: Vamos fazer o seguinte, se\nvocê entrar na casa e destrancar a porta da frente para nós...", 2);
-		node4 = new DialogueNode("...vamos considerar te colocar no nosso time\nde basquete, novato", 3);
+		node2 = new DialogueNode("Garoto de boné: Acho que não né, você se\nmudou a pouco tempo.", 1);
+		node3 = new DialogueNode("Garoto alto: Vamos fazer o seguinte, se você\nentrar na casa e destrancar a porta da frente para nós...", 2);
+		node4 = new DialogueNode("...vamos considerar te colocar no nosso time\nde basquete, novato.", 3);
 		node4.setEnd();
 		dialogue.addDialogueNode(node1);
 		dialogue.addDialogueNode(node2);
@@ -992,8 +992,8 @@ public class DialogueDatabase {
 		//foto parede cena 5
 		dialogue = new Dialogue();
 		node1 = new DialogueNode("Alek: Definitivamente são os donos da casa. Não sei explicar,\nmas eles parecem estranhos.", 0,1);
-		node2 = new DialogueNode("Alek: Bem, essa casa é gigante. Gente rica costuma ser estranha", 1,1);
-		node3 = new DialogueNode("Fanta: Se eles forem meus pais mesmo, eu vou\nficar ofendido com o que você disse", 2,2);
+		node2 = new DialogueNode("Alek: Bem, essa casa é gigante. Gente rica costuma ser estranha.", 1,1);
+		node3 = new DialogueNode("Fanta: Se eles forem meus pais mesmo, eu vou\nficar ofendido com o que você disse.", 2,2);
 		node4 = new DialogueNode("Alek: Fica mec aí, falei na moral.", 3,1);
 		node5 = new DialogueNode("Alek: Mas me pergunto onde eles estão agora...\nNão é normal uma casa dessas ficar desocupada.", 4,1);
 		node6 = new DialogueNode("Alek: agora que parei para pensar, essa mulher me lembra alguém...", 5,1);
@@ -1095,7 +1095,7 @@ public class DialogueDatabase {
 		
 		//anjo cena6
 		dialogue = new Dialogue();
-		node1 = new DialogueNode("Alek: Hmmm, não reconheço, deve ser um desenho aleatório", 0,1);
+		node1 = new DialogueNode("Alek: Hmmm, não reconheço, deve ser um desenho aleatório.", 0,1);
 		node2 = new DialogueNode("Fanta: Vai ver eu que pintei quando estava vivo?", 1,2);
 		node3 = new DialogueNode("Alek: Vai que, né.", 2,1);
 		node3.setEnd();
@@ -1163,7 +1163,7 @@ public class DialogueDatabase {
 		
 		//caixa cena8
 		dialogue = new Dialogue();
-		node1 = new DialogueNode("Alek: Bem, tudo na casa está bagunçado. Era de se esperar que isso estivesse\ntambém, mas o nível de pó aqui tá surreal, aí minha rinite.", 0,1);
+		node1 = new DialogueNode("Alek: Bem, tudo na casa está bagunçado. Era de se esperar que isso estivesse\ntambém, mas o nível de pó aqui tá surreal. Aí minha rinite.", 0,1);
 		node1.setEnd();
 		dialogue.addDialogueNode(node1);
 		DialogueDatabase.dialogues[91] = dialogue;

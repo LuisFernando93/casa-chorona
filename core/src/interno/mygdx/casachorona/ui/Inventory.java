@@ -51,6 +51,12 @@ public class Inventory{
 		return null; //item nao encontrada
 	}
 	
+	public void resetItems() {
+		for (int i = 0; i < items.length; i++) {
+			items[i].reset();
+		}
+	}
+	
 	public void render(float delta, SpriteBatch batch, AssetTextures assetTextures) {
 		for (int i = 0; i < 5; i++) {
 			batch.draw(assetTextures.getInventoryBox(), (45 + i*(assetTextures.getInventoryBox().getWidth()+26))*Settings.SCREEN_SCALE, (Settings.SCREEN_HEIGHT-assetTextures.getInventoryBox().getHeight()/2 - 5)*Settings.SCREEN_SCALE, assetTextures.getInventoryBox().getWidth(), assetTextures.getInventoryBox().getHeight());

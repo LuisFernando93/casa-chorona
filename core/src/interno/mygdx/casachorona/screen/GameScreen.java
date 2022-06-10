@@ -54,6 +54,9 @@ public class GameScreen extends AbstractScreen {
 	private DialogueBox dialogueBox;
 	
 	private static String gameState = "menu";
+	
+	private static boolean begin = false;
+	private static boolean close = false;
 
 	public GameScreen(CasaChorona game) {
 		super(game);
@@ -96,6 +99,14 @@ public class GameScreen extends AbstractScreen {
 		GameScreen.gameState = gameState;
 	}
 	
+	public static void startNewGame() {
+		GameScreen.begin = true;
+	}
+	
+	public static void closeGame() {
+		GameScreen.close = true;
+	}
+	
 	private void initUI() {
 		uiStage = new Stage(new ScreenViewport());
 		uiStage.getViewport().update(Settings.SCREEN_WIDTH/uiScale, Settings.SCREEN_HEIGHT/uiScale, true);
@@ -116,10 +127,11 @@ public class GameScreen extends AbstractScreen {
 	}
 	
 	private void newGame() {
+		GameScreen.begin = false;
 		world.createWorld();
 		World.resetEvents();
-		inventory = new Inventory();
-		player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2, world, inventory, dialogueBox);
+		inventory.resetItems();
+		//player = new PlayerPointer(Settings.SCREEN_WIDTH * Settings.SCREEN_SCALE/2, Settings.SCREEN_HEIGHT * Settings.SCREEN_SCALE/2, world, inventory, dialogueBox);
 		player.setCurrentLocation(Location.SCENE1);
 		CutscenePlayer.setActiveCutscene(0);
 		GameScreen.setGameState("cutscenePlayer");
@@ -128,7 +140,7 @@ public class GameScreen extends AbstractScreen {
 	@Override
 	public void show() {
 		Gdx.input.setInputProcessor(multiplexer);
-		AudioPlayer.playSoundtrack("game");
+		AudioPlayer.playSoundtrack("menu");
 	}
 
 	@Override
@@ -152,15 +164,10 @@ public class GameScreen extends AbstractScreen {
 			
 			uiStage.draw();
 			
-			if (player.isClicked()) {
-				player.action();
-			}
-			
 			World.manageEvents(player, dialogueBox);
 			break;
 			
 		case "menu": 
-			System.out.println("menu");
 			batch.begin();
 			
 			//renderizar cenario
@@ -170,10 +177,23 @@ public class GameScreen extends AbstractScreen {
 			player.render(delta, batch, assetTextures);
 			
 			batch.end();
+			
+			if (GameScreen.begin) {
+				newGame();
+			}
+			
+			if (GameScreen.close) {
+				Gdx.app.exit();
+			}
+			
 			break;
 		
 		case "credits": 
-			System.out.println("creditos");
+			
+			batch.begin();
+			batch.draw(backgroundTextures.getMenuArt("credits"), 112 * Settings.SCREEN_SCALE, 32*Settings.SCREEN_SCALE, 256 * Settings.SCREEN_SCALE, 256 *Settings.SCREEN_SCALE);
+			player.render(delta, batch, assetTextures);
+			batch.end();
 			break;
 			
 		case "cutscenePlayer": 
@@ -190,6 +210,10 @@ public class GameScreen extends AbstractScreen {
 			uiStage.draw();
 			
 			break;
+		}
+		
+		if (player.isClicked()) {
+			player.action();
 		}
 	}
 

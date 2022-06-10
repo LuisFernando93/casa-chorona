@@ -3,7 +3,9 @@ package interno.mygdx.casachorona.model;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import interno.mygdx.casachorona.audio.AudioPlayer;
 import interno.mygdx.casachorona.game.Settings;
+import interno.mygdx.casachorona.screen.GameScreen;
 import interno.mygdx.casachorona.ui.DialogueBox;
 import interno.mygdx.casachorona.ui.Inventory;
 import interno.mygdx.casachorona.world.Door;
@@ -59,27 +61,30 @@ public class PlayerPointer {
 	public void movePointer(int x, int y) {
 		this.x = x;
 		this.y = y;
-		if(!dialogueBox.isVisible()) {
-			if(!this.selectedItem) {
-				Item item = inventory.getItem(x, y);
-				if (item != null && item.isPickedUp()) {
-					this.pointerType = PointerType.HIGHLIGHT;
-					return;
+		if (GameScreen.getGameState() == "game") {
+			if(!dialogueBox.isVisible()) {
+				if(!this.selectedItem) {
+					Item item = inventory.getItem(x, y);
+					if (item != null && item.isPickedUp()) {
+						this.pointerType = PointerType.HIGHLIGHT;
+						return;
+					}
+					Scene scene = world.findCurrentScene(this.currentLocation);
+					Door door = scene.getDoor(x, y);
+					if (door != null) {
+						this.pointerType = door.getPointerType();
+						return;
+					}
+					SceneProp prop = scene.getProp(x, y);
+					if (prop != null) {
+						this.pointerType = PointerType.HIGHLIGHT;
+						return;
+					}
+					this.pointerType = PointerType.DEFAULT;
 				}
-				Scene scene = world.findCurrentScene(this.currentLocation);
-				Door door = scene.getDoor(x, y);
-				if (door != null) {
-					this.pointerType = door.getPointerType();
-					return;
-				}
-				SceneProp prop = scene.getProp(x, y);
-				if (prop != null) {
-					this.pointerType = PointerType.HIGHLIGHT;
-					return;
-				}
-				this.pointerType = PointerType.DEFAULT;
-			}
-		} else this.pointerType = PointerType.DEFAULT;
+			} else this.pointerType = PointerType.DEFAULT;
+		}
+		
 	}
 	
 	public boolean isClicked() {
@@ -113,14 +118,34 @@ public class PlayerPointer {
 	}
 	
 	public void action() {
-		
-		if (checkForItem()) {
-			return;
+		switch (GameScreen.getGameState()) {
+		case "game":
+			if (checkForItem()) {
+				return;
+			}
+			checkForDoor();
+			checkForProp();
+			this.selectedItem = false;
+			this.pointerType = PointerType.DEFAULT;
+			break;
+		case "menu":
+			if((this.clickedX >= 208*Settings.SCREEN_SCALE && this.clickedX <= 270*Settings.SCREEN_SCALE) && (this.clickedY >= 124*Settings.SCREEN_SCALE && this.clickedY <= 148*Settings.SCREEN_SCALE)) {
+				GameScreen.startNewGame();
+			} else if((this.clickedX >= 208*Settings.SCREEN_SCALE && this.clickedX <= 270*Settings.SCREEN_SCALE) && (this.clickedY >= 154*Settings.SCREEN_SCALE && this.clickedY <= 178*Settings.SCREEN_SCALE)) {
+				GameScreen.setGameState("credits");
+				AudioPlayer.playSoundtrack("credits");
+			} else if((this.clickedX >= 208*Settings.SCREEN_SCALE && this.clickedX <= 270*Settings.SCREEN_SCALE) && (this.clickedY >= 184*Settings.SCREEN_SCALE && this.clickedY <= 208*Settings.SCREEN_SCALE)) {
+				GameScreen.closeGame();
+			}
+			break;
+		case "credits":
+			if((this.clickedX >= 120*Settings.SCREEN_SCALE && this.clickedX <= 142*Settings.SCREEN_SCALE) && (this.clickedY >= 260*Settings.SCREEN_SCALE && this.clickedY <= 282*Settings.SCREEN_SCALE)) {
+				GameScreen.setGameState("menu");
+				AudioPlayer.playSoundtrack("menu");
+			}
+			break;
 		}
-		checkForDoor();
-		checkForProp();
-		this.selectedItem = false;
-		this.pointerType = PointerType.DEFAULT;
+		
 	}
 	
 	public boolean checkForItem() {
